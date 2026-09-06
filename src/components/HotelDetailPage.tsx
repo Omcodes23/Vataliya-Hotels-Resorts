@@ -32,7 +32,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(
-      `Hello Vataliya Sales, I would like to inquire about stay and details for *${hotel.name}* (${hotel.city}). Please connect with me.`
+      `Hello Vataliya Sales, I would like to inquire about stay and details for *${hotel.name} by Vataliya* (${hotel.city}). Please connect with me.`
     );
     window.open(`https://api.whatsapp.com/send?phone=${VATALIYA_CORPORATE_INFO.whatsappNumber}&text=${text}`, '_blank');
   };
@@ -55,7 +55,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             <ChevronRight size={12} className="text-gray-600" />
             <span>{hotel.city}</span>
             <ChevronRight size={12} className="text-gray-600" />
-            <span className="text-white font-medium">{hotel.name}</span>
+            <span className="text-white font-medium">{hotel.name} by Vataliya</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -67,7 +67,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
               <span>{VATALIYA_CORPORATE_INFO.phoneDisplay}</span>
             </a>
             <a
-              href={`mailto:${hotel.hotelInquiryEmail}`}
+              href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry for ${encodeURIComponent(hotel.name + ' by Vataliya')}`}
               className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-medium"
             >
               <Mail size={13} />
@@ -104,9 +104,9 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
               </span>
             </div>
 
-            {/* Hotel Name & Tagline */}
+            {/* Hotel Name with by Vataliya & Tagline */}
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-tight">
-              {hotel.name}
+              {hotel.name} <span className="text-[#d8b45c] text-3xl sm:text-4xl block sm:inline font-normal">by Vataliya</span>
             </h1>
             <p className="text-base sm:text-lg text-gray-200 font-light max-w-2xl leading-relaxed">
               {hotel.tagline}
@@ -115,8 +115,8 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             {/* Action Buttons & Direct Inquire Mail */}
             <div className="pt-4 flex flex-wrap items-center gap-3.5">
               <a
-                href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry for ${hotel.name}`}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg shadow-xl shadow-[#d8b45c]/20 hover:scale-[1.02] active:scale-[0.98] transition"
+                href={`mailto:${hotel.hotelInquiryEmail}`}
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg shadow-xl shadow-[#d8b45c]/20 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer"
               >
                 <Mail size={15} /> Inquire: {hotel.hotelInquiryEmail}
               </a>
@@ -237,7 +237,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             </p>
           </div>
           <a
-            href={`mailto:${hotel.hotelInquiryEmail}?subject=Room Inquiries for ${hotel.name}`}
+            href={`mailto:${hotel.hotelInquiryEmail}?subject=Room%20Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}`}
             className="self-start md:self-auto inline-flex items-center gap-1.5 text-xs text-[#d8b45c] font-semibold tracking-wider uppercase hover:underline"
           >
             Inquire via Email: {hotel.hotelInquiryEmail} <ArrowRight size={14} />
@@ -313,15 +313,15 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
                 {/* Email & WhatsApp Inquire Actions */}
                 <div className="pt-4 flex items-center gap-3">
                   <a
-                    href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry for ${room.name} at ${hotel.name}`}
-                    className="flex-1 py-3 px-4 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg hover:shadow-lg hover:shadow-[#d8b45c]/20 transition text-center flex items-center justify-center gap-2"
+                    href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry%20for%20${encodeURIComponent(room.name)}%20at%20${encodeURIComponent(hotel.name + ' by Vataliya')}&body=Hello%20Vataliya%20Team,%0D%0A%0D%0AI%20am%20interested%20in%20the%20${encodeURIComponent(room.name)}%20at%20${encodeURIComponent(hotel.name + ' by Vataliya')}.%0D%0A%0D%0APlease%20share%20details%20and%20tariffs.`}
+                    className="flex-1 py-3 px-4 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg hover:shadow-lg hover:shadow-[#d8b45c]/20 transition text-center flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Mail size={14} /> Send Email Inquiry
                   </a>
                   <button
                     onClick={() => {
                       const msg = encodeURIComponent(
-                        `Hello Vataliya Concierge, I'm interested in *${room.name}* at *${hotel.name}*. Please share details and availability.`
+                        `Hello Vataliya Concierge, I'm interested in *${room.name}* at *${hotel.name} by Vataliya*. Please share details and availability.`
                       );
                       window.open(`https://api.whatsapp.com/send?phone=${VATALIYA_CORPORATE_INFO.whatsappNumber}&text=${msg}`, '_blank');
                     }}
@@ -402,7 +402,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             Signature Moments
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-white font-medium">
-            Experiences at {hotel.name}
+            Experiences at {hotel.name} by Vataliya
           </h2>
           <p className="text-sm text-gray-400">
             Unforgettable activities crafted to immerse you in Himalayan serenity and outdoor adventures.
@@ -511,7 +511,10 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
               <img
                 src={img.url}
                 alt={img.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                style={{ display: 'block' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
                 <span className="text-xs text-white font-medium">{img.title}</span>
@@ -532,7 +535,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
                 Location & Direct Inquiry
               </span>
               <h2 className="font-serif text-3xl text-white font-medium">
-                Send Direct Inquiries
+                Direct Inquiries
               </h2>
               <div className="space-y-3.5 text-sm text-gray-300">
                 <p className="flex items-start gap-2.5">
@@ -545,17 +548,17 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Mail size={18} className="text-[#d8b45c] flex-shrink-0" />
-                  <span><strong>Property Email:</strong> <a href={`mailto:${hotel.hotelInquiryEmail}`} className="text-[#f0d795] hover:underline">{hotel.hotelInquiryEmail}</a></span>
+                  <span><strong>Property Email:</strong> <a href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}`} className="text-[#f0d795] hover:underline">{hotel.hotelInquiryEmail}</a></span>
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Mail size={18} className="text-[#d8b45c] flex-shrink-0" />
-                  <span><strong>Central Booking:</strong> <a href={`mailto:${VATALIYA_CORPORATE_INFO.bookingEmail}`} className="text-[#f0d795] hover:underline">{VATALIYA_CORPORATE_INFO.bookingEmail}</a></span>
+                  <span><strong>Central Booking:</strong> <a href={`mailto:${VATALIYA_CORPORATE_INFO.bookingEmail}?subject=Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}`} className="text-[#f0d795] hover:underline">{VATALIYA_CORPORATE_INFO.bookingEmail}</a></span>
                 </p>
               </div>
 
               <div className="pt-4 flex gap-3">
                 <a
-                  href={`mailto:${hotel.hotelInquiryEmail}?subject=Direct Inquiry for ${hotel.name}`}
+                  href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}&body=Hello%20Vataliya%20Team,%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20${encodeURIComponent(hotel.name + ' by Vataliya')}.`}
                   className="flex-1 py-3 px-4 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg text-center flex items-center justify-center gap-1.5"
                 >
                   <Mail size={14} /> Send Email
@@ -601,15 +604,15 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             Vataliya Hotels & Resorts
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-white font-medium">
-            Inquire for {hotel.name}
+            Inquire for {hotel.name} by Vataliya
           </h2>
           <p className="text-sm text-gray-200">
             Connect directly via email at <strong className="text-[#f0d795]">{hotel.hotelInquiryEmail}</strong> or call our desk on <strong className="text-white">{VATALIYA_CORPORATE_INFO.phoneDisplay}</strong>.
           </p>
           <div className="pt-3 flex flex-wrap justify-center gap-3">
             <a
-              href={`mailto:${hotel.hotelInquiryEmail}?subject=Stay Inquiry for ${hotel.name}`}
-              className="px-8 py-3.5 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg shadow-xl shadow-[#d8b45c]/30 hover:scale-105 transition inline-flex items-center gap-2"
+              href={`mailto:${hotel.hotelInquiryEmail}?subject=Stay%20Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}&body=Hello%20Vataliya%20Team,%0D%0A%0D%0AI%20would%20like%20to%20inquire%20about%20staying%20at%20${encodeURIComponent(hotel.name + ' by Vataliya')}.`}
+              className="px-8 py-3.5 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg shadow-xl shadow-[#d8b45c]/30 hover:scale-105 transition inline-flex items-center gap-2 cursor-pointer"
             >
               <Mail size={16} /> Email: {hotel.hotelInquiryEmail}
             </a>

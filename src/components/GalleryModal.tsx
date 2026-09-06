@@ -67,7 +67,10 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
           <img
             src={currentImage.url}
             alt={currentImage.title}
+            loading="eager"
+            decoding="async"
             className="max-h-[75vh] w-auto max-w-full object-contain"
+            style={{ display: 'block' }}
           />
         </div>
 

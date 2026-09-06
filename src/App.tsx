@@ -27,7 +27,6 @@ const HOTEL_NIGHT = 'https://images.pexels.com/photos/36477914/pexels-photo-3647
 const LOBBY = 'https://images.pexels.com/photos/14011664/pexels-photo-14011664.jpeg?auto=compress&cs=tinysrgb&w=1920';
 const ROOM2 = 'https://images.pexels.com/photos/8082217/pexels-photo-8082217.jpeg?auto=compress&cs=tinysrgb&w=1920';
 const LOBBY2 = 'https://images.pexels.com/photos/14036253/pexels-photo-14036253.jpeg?auto=compress&cs=tinysrgb&w=1920';
-const CONCIERGE = 'https://images.pexels.com/photos/5378703/pexels-photo-5378703.jpeg?auto=compress&cs=tinysrgb&w=1920';
 
 const portfolioItems = [
   { img: RESORT_DUSK, name: 'Boutique Mountain Resorts', tag: 'Shimla & Manali', size: 'tall' },
@@ -207,8 +206,12 @@ export function App() {
               {/* Right Brand Emblem Box */}
               <div className="lg:col-span-4 hidden lg:flex flex-col items-center">
                 <div className="p-8 rounded-3xl bg-gradient-to-br from-[#081a38]/90 via-[#071329]/90 to-[#050b18]/90 border border-[#d8b45c]/40 shadow-2xl backdrop-blur-xl text-center space-y-4 max-w-sm">
-                  <div className="w-20 h-20 mx-auto rounded-2xl bg-[#081a38] border border-[#d8b45c]/50 p-2 flex items-center justify-center shadow-lg">
-                    <img src="/vataliya1.png" alt="Vataliya Logo" className="w-full h-full object-contain" />
+                  <div className="w-24 h-24 mx-auto rounded-2xl overflow-hidden bg-[#081a38] border border-[#d8b45c]/50 p-2 flex items-center justify-center shadow-lg">
+                    <img
+                      src="/vataliya1.png"
+                      alt="Vataliya Logo"
+                      className="w-full h-full object-contain rounded-xl"
+                    />
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-semibold text-white tracking-wider">
@@ -240,111 +243,55 @@ export function App() {
             </a>
           </section>
 
-          {/* 01. OUR PARTNER HOTELS & BRAND SHOWCASE */}
+          {/* 01. OUR PARTNER HOTELS (CLEAN LOGO & LOCATION ONLY) */}
           <section id="hotels" className="py-24 px-4 sm:px-8 bg-[#071329] text-[#f6f4ef] border-t border-[#d8b45c]/20">
             <div className="max-w-7xl mx-auto space-y-12">
 
-              <div className="text-center max-w-3xl mx-auto space-y-3">
+              <div className="text-center max-w-2xl mx-auto space-y-2">
                 <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-[#d8b45c] uppercase">
                   <Building2 size={14} /> 01 — Our Partner Hotels
                 </span>
-                <h2 className="font-serif text-3xl sm:text-5xl text-white font-medium">
-                  Himalayan Hotel Brands
+                <h2 className="font-serif text-3xl sm:text-4xl text-white font-medium">
+                  Hotels & Resorts by Vataliya
                 </h2>
-                <p className="text-sm sm:text-base text-gray-300">
-                  Select a destination hotel brand below to explore rooms, dining, and mountain experiences.
-                </p>
               </div>
 
-              {/* Hotel Brand Logos & Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Minimalist Hotel Brand Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {Object.values(HOTELS_DATA).map((hotel) => (
+                  <div
+                    key={hotel.id}
+                    onClick={() => navigateToHotel(hotel.slug)}
+                    className="group cursor-pointer p-7 rounded-2xl bg-gradient-to-br from-[#081a38] to-[#050b18] border border-[#d8b45c]/35 hover:border-[#d8b45c] hover:shadow-2xl hover:shadow-[#d8b45c]/10 transition-all duration-300 flex flex-col items-center text-center space-y-4"
+                  >
+                    {/* Hotel Logo Container */}
+                    <div className="w-48 h-24 rounded-2xl bg-white p-3 flex items-center justify-center group-hover:scale-105 transition shadow-md overflow-hidden border border-white/10">
+                      <img
+                        src={hotel.logoUrl}
+                        alt={`${hotel.name} Logo`}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
 
-                {/* Hotel 1 Logo Card: Shimla */}
-                <div
-                  onClick={() => navigateToHotel('manaw-valley-resort')}
-                  className="group cursor-pointer p-8 rounded-2xl bg-gradient-to-br from-[#081a38] to-[#050b18] border border-[#d8b45c]/35 hover:border-[#d8b45c] hover:shadow-2xl hover:shadow-[#d8b45c]/10 transition-all duration-300 flex flex-col items-center text-center space-y-5"
-                >
-                  <div className="flex items-center justify-between w-full border-b border-white/10 pb-3">
-                    <span className="px-2.5 py-1 rounded-full bg-[#d8b45c]/15 text-[#f0d795] text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1">
-                      <MapPin size={11} className="text-[#d8b45c]" /> Shimla, Himachal
-                    </span>
-                    <span className="text-[11px] text-[#f0d795] flex items-center gap-1">
-                      <Star size={11} fill="#d8b45c" /> 4★ Luxury Resort
-                    </span>
-                  </div>
+                    {/* Location */}
+                    <div className="flex items-center gap-1.5 text-xs text-[#f0d795] font-medium pt-1">
+                      <MapPin size={13} className="text-[#d8b45c]" />
+                      <span>{hotel.city}, {hotel.state}</span>
+                    </div>
 
-                  {/* Hotel Emblem Logo Box */}
-                  <div className="w-24 h-24 rounded-2xl bg-[#071329] border border-[#d8b45c]/40 p-3 flex items-center justify-center group-hover:scale-105 transition shadow-lg">
-                    <img
-                      src="/vataliya1.png"
-                      alt="Manaw Valley Resort Emblem"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium group-hover:text-[#f0d795] transition">
-                      Manaw Valley Resort
+                    {/* Hotel Name by Vataliya */}
+                    <h3 className="font-serif text-2xl text-white font-medium group-hover:text-[#f0d795] transition">
+                      {hotel.name} <span className="text-[#d8b45c] text-lg font-normal">by Vataliya</span>
                     </h3>
-                    <p className="text-xs text-[#d8b45c] uppercase tracking-widest font-medium">
-                      Near Kamyana, Radisson Road, Shimla
-                    </p>
+
+                    {/* Clean Explore Action */}
+                    <div className="pt-2 w-full">
+                      <span className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold tracking-wider text-[#d8b45c] uppercase group-hover:translate-x-1 transition-transform">
+                        Explore Property <ArrowRight size={13} />
+                      </span>
+                    </div>
                   </div>
-
-                  <p className="text-xs text-gray-300 max-w-sm leading-relaxed">
-                    Centralized heated luxury rooms, private valley balconies, steam sauna, wellness pool & grand mountain dining.
-                  </p>
-
-                  <div className="pt-2 w-full">
-                    <span className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg group-hover:shadow-lg transition">
-                      Explore Manaw Valley Resort <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-
-                {/* Hotel 2 Logo Card: Manali */}
-                <div
-                  onClick={() => navigateToHotel('hotel-indrasan-manali')}
-                  className="group cursor-pointer p-8 rounded-2xl bg-gradient-to-br from-[#081a38] to-[#050b18] border border-[#d8b45c]/35 hover:border-[#d8b45c] hover:shadow-2xl hover:shadow-[#d8b45c]/10 transition-all duration-300 flex flex-col items-center text-center space-y-5"
-                >
-                  <div className="flex items-center justify-between w-full border-b border-white/10 pb-3">
-                    <span className="px-2.5 py-1 rounded-full bg-[#d8b45c]/15 text-[#f0d795] text-[10px] font-semibold uppercase tracking-wider flex items-center gap-1">
-                      <MapPin size={11} className="text-[#d8b45c]" /> Manali, Himachal
-                    </span>
-                    <span className="text-[11px] text-[#f0d795] flex items-center gap-1">
-                      <Star size={11} fill="#d8b45c" /> 3★ Luxury Haven
-                    </span>
-                  </div>
-
-                  {/* Hotel Emblem Logo Box */}
-                  <div className="w-24 h-24 rounded-2xl bg-[#071329] border border-[#d8b45c]/40 p-3 flex items-center justify-center group-hover:scale-105 transition shadow-lg">
-                    <img
-                      src="/vataliya1.png"
-                      alt="Hotel Indrasan Emblem"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium group-hover:text-[#f0d795] transition">
-                      Hotel Indrasan Manali
-                    </h3>
-                    <p className="text-xs text-[#d8b45c] uppercase tracking-widest font-medium">
-                      Naggar Road, Prini, Manali
-                    </p>
-                  </div>
-
-                  <p className="text-xs text-gray-300 max-w-sm leading-relaxed">
-                    Step-out snow peak balconies, lush apple orchard cafe, bonfire evenings, multicuisine dining & sightseeing tours.
-                  </p>
-
-                  <div className="pt-2 w-full">
-                    <span className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-[#d8b45c] to-[#f0d795] text-[#101827] font-semibold text-xs tracking-widest uppercase rounded-lg group-hover:shadow-lg transition">
-                      Explore Hotel Indrasan <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
-
+                ))}
               </div>
 
             </div>

@@ -38,6 +38,7 @@ export interface HotelData {
   hotelInquiryEmail: string;
   centralBookingEmail: string;
   whatsappNumber: string;
+  logoUrl: string;
   heroImage: string;
   bannerImages: string[];
   about: {
@@ -95,6 +96,7 @@ export const HOTELS_DATA: Record<string, HotelData> = {
     hotelInquiryEmail: 'manawvalley@vataliyas.com',
     centralBookingEmail: 'booking@vataliyas.com',
     whatsappNumber: '919106662535',
+    logoUrl: 'https://manawvalleyresort.com/img/logo/logo.png',
     heroImage: 'https://manawvalleyresort.com/gallery/1.jpg',
     bannerImages: [
       'https://manawvalleyresort.com/gallery/1.jpg',
@@ -303,6 +305,7 @@ export const HOTELS_DATA: Record<string, HotelData> = {
     hotelInquiryEmail: 'hotelindrasan@vataliyas.com',
     centralBookingEmail: 'booking@vataliyas.com',
     whatsappNumber: '919106662535',
+    logoUrl: 'https://www.hotelindrasanmanali.com/images/logo.jpg',
     heroImage: 'https://www.hotelindrasanmanali.com/images/indrasan.jpg',
     bannerImages: [
       'https://www.hotelindrasanmanali.com/images/indrasan.jpg',
