@@ -392,14 +392,185 @@ h1 span { color:#fff; font-size:.72em; letter-spacing:-.02em; }
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.98);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
 .animate-fadeIn {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.25s ease-out forwards;
 }
+
+@keyframes goldPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(216, 180, 92, 0.35), 0 0 45px rgba(216, 180, 92, 0.15), inset 0 0 12px rgba(216, 180, 92, 0.2);
+    border-color: rgba(216, 180, 92, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(240, 215, 149, 0.65), 0 0 70px rgba(216, 180, 92, 0.35), inset 0 0 20px rgba(240, 215, 149, 0.35);
+    border-color: rgba(240, 215, 149, 0.95);
+  }
+}
+
+@keyframes goldBorderShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes luxuryFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes lightSheenSweep {
+  0% {
+    transform: translateX(-120%) rotate(25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  40% {
+    transform: translateX(220%) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(220%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes orbBreathe {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.15) translate(15px, -15px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes rotateGoldBeam {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.luxury-logo-halo {
+  position: relative;
+  border-radius: 1.25rem;
+  padding: 2.5px;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(216, 180, 92, 0.3), 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.luxury-logo-halo::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #d8b45c 40deg,
+    #fff4d1 90deg,
+    #d8b45c 140deg,
+    transparent 180deg,
+    #d8b45c 220deg,
+    #fff4d1 270deg,
+    #d8b45c 320deg,
+    transparent 360deg
+  );
+  animation: rotateGoldBeam 4.5s linear infinite;
+  z-index: 0;
+}
+
+.luxury-logo-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(1.25rem - 2.5px);
+  background: linear-gradient(145deg, #0d2244, #07152b, #030914);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 0 16px rgba(216, 180, 92, 0.25);
+}
+
+.luxury-logo-border {
+  position: relative;
+  border-radius: 1rem;
+  animation: goldPulseGlow 4s ease-in-out infinite;
+}
+
+.luxury-shimmer-border {
+  position: relative;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, rgba(216, 180, 92, 0.95), rgba(13, 34, 68, 0.4), rgba(240, 215, 149, 1), rgba(7, 21, 43, 0.4), rgba(216, 180, 92, 0.95));
+  background-size: 300% 300%;
+  animation: goldBorderShimmer 6s ease-in-out infinite, goldPulseGlow 4s ease-in-out infinite;
+  padding: 2px;
+}
+
+.luxury-hero-card {
+  animation: luxuryFloat 6s ease-in-out infinite;
+}
+
+.luxury-sheen-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-sheen-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    rgba(240, 215, 149, 0.18),
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  animation: lightSheenSweep 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.orb-one {
+  background: radial-gradient(circle, rgba(216, 180, 92, 0.22) 0%, rgba(216, 180, 92, 0) 70%);
+  animation: orbBreathe 8s ease-in-out infinite;
+}
+
+.orb-two {
+  background: radial-gradient(circle, rgba(36, 76, 130, 0.45) 0%, rgba(36, 76, 130, 0) 70%);
+  animation: orbBreathe 10s ease-in-out infinite reverse;
+}
+

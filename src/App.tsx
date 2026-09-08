@@ -206,32 +206,38 @@ export function App() {
 
               {/* Right Brand Emblem Box */}
               <div className="lg:col-span-4 hidden lg:flex flex-col items-center">
-                <div className="p-8 rounded-3xl bg-gradient-to-br from-[#081a38]/90 via-[#071329]/90 to-[#050b18]/90 border border-[#d8b45c]/40 shadow-2xl backdrop-blur-xl text-center space-y-4 max-w-sm">
-                  <div className="w-24 h-24 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d2244] via-[#07152b] to-[#030914] border border-[#d8b45c]/60 p-0 flex items-center justify-center shadow-lg">
-                    <img
-                      src="/vataliya1.png"
-                      alt="Vataliya Logo"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl font-semibold text-white tracking-wider">
-                      VATALIYA
-                    </h3>
-                    <p className="text-[10px] text-[#d8b45c] uppercase tracking-widest mt-0.5">
-                      Hotels & Resorts Partner
-                    </p>
-                  </div>
-                  <p className="text-xs text-gray-300 leading-relaxed pt-2 border-t border-white/10">
-                    Central hospitality desk for property management, group bookings, and stay inquiries.
-                  </p>
-                  <div className="pt-1">
-                    <a
-                      href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-                      className="inline-flex items-center gap-2 text-xs text-[#f0d795] font-semibold tracking-wider hover:underline"
-                    >
-                      <Phone size={13} /> {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                    </a>
+                <div className="luxury-hero-card max-w-sm w-full">
+                  <div className="luxury-shimmer-border w-full shadow-2xl">
+                    <div className="luxury-sheen-container p-8 rounded-[1.4rem] bg-gradient-to-br from-[#081a38]/95 via-[#071329]/95 to-[#050b18]/95 text-center space-y-4">
+                      <div className="w-24 h-24 mx-auto luxury-logo-halo">
+                        <div className="luxury-logo-inner p-0">
+                          <img
+                            src="/vataliya1.png"
+                            alt="Vataliya Logo"
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-xl font-semibold text-white tracking-wider">
+                          VATALIYA
+                        </h3>
+                        <p className="text-[10px] text-[#d8b45c] uppercase tracking-widest mt-0.5">
+                          Hotels & Resorts Partner
+                        </p>
+                      </div>
+                      <p className="text-xs text-gray-300 leading-relaxed pt-2 border-t border-white/10">
+                        Central hospitality desk for property management, group bookings, and stay inquiries.
+                      </p>
+                      <div className="pt-1">
+                        <a
+                          href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
+                          className="inline-flex items-center gap-2 text-xs text-[#f0d795] font-semibold tracking-wider hover:underline"
+                        >
+                          <Phone size={13} /> {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

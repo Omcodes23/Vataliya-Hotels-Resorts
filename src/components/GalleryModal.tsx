@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, Loader2, Sparkles, X } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 interface GalleryModalProps {
   isOpen: boolean;
@@ -16,20 +17,12 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
   currentIndex,
   setCurrentIndex,
 }) => {
-  const [loading, setLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
   // Safe index validation
   const safeIndex = images && images.length > 0
     ? Math.min(Math.max(0, currentIndex), images.length - 1)
     : 0;
 
   const currentImage = images && images.length > 0 ? images[safeIndex] : null;
-
-  useEffect(() => {
-    setLoading(true);
-    setHasError(false);
-  }, [currentIndex, isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -44,16 +37,20 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
       }
     };
 
+    // Lock body scroll while modal is active
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = originalOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, safeIndex, images?.length, onClose, setCurrentIndex]);
 
-  if (!isOpen || !currentImage) return null;
+  if (!isOpen || !currentImage || typeof document === 'undefined') {
+    return null;
+  }
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -65,102 +62,75 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
     setCurrentIndex(safeIndex === images.length - 1 ? 0 : safeIndex + 1);
   };
 
-  return (
+  const modalContent = (
     <div
+      role="dialog"
+      aria-modal="true"
       onClick={onClose}
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/92 backdrop-blur-xl p-3 sm:p-6 select-none animate-fadeIn"
-      style={{ isolation: 'isolate' }}
+      className="fixed inset-0 w-screen h-screen z-[999999] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-8 select-none"
+      style={{ isolation: 'isolate', top: 0, left: 0, right: 0, bottom: 0 }}
     >
-      {/* Top Bar / Close Button */}
-      <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-50 flex items-center gap-3">
-        <button
-          onClick={onClose}
-          className="p-3 text-white/80 hover:text-white bg-[#071329]/90 border border-[#d8b45c]/40 rounded-full hover:bg-[#d8b45c] hover:text-black transition-all shadow-xl hover:scale-105"
-          aria-label="Close modal"
-          title="Close (Esc)"
-        >
-          <X size={22} />
-        </button>
-      </div>
-
-      {/* Prev Navigation Button */}
+      {/* Top Close Button */}
       <button
+        type="button"
+        onClick={onClose}
+        className="absolute top-5 right-5 sm:top-6 sm:right-8 p-3 text-white/90 hover:text-white bg-[#071329]/90 border border-[#d8b45c]/50 rounded-full hover:bg-[#d8b45c] hover:text-black transition-all z-50 shadow-2xl hover:scale-105 cursor-pointer"
+        aria-label="Close modal"
+        title="Close (Esc)"
+      >
+        <X size={24} />
+      </button>
+
+      {/* Prev Button */}
+      <button
+        type="button"
         onClick={handlePrev}
-        className="absolute left-3 sm:left-6 md:left-10 p-3 sm:p-4 text-[#f0d795] hover:text-black bg-[#071329]/90 border border-[#d8b45c]/40 rounded-full hover:bg-[#d8b45c] transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
+        className="absolute left-3 sm:left-6 md:left-10 p-3.5 sm:p-4 text-[#f0d795] hover:text-black bg-[#071329]/90 border border-[#d8b45c]/50 rounded-full hover:bg-[#d8b45c] transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95 cursor-pointer"
         aria-label="Previous image"
         title="Previous (Left Arrow)"
       >
-        <ChevronLeft size={24} />
+        <ChevronLeft size={28} />
       </button>
 
-      {/* Next Navigation Button */}
+      {/* Next Button */}
       <button
+        type="button"
         onClick={handleNext}
-        className="absolute right-3 sm:right-6 md:right-10 p-3 sm:p-4 text-[#f0d795] hover:text-black bg-[#071329]/90 border border-[#d8b45c]/40 rounded-full hover:bg-[#d8b45c] transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
+        className="absolute right-3 sm:right-6 md:right-10 p-3.5 sm:p-4 text-[#f0d795] hover:text-black bg-[#071329]/90 border border-[#d8b45c]/50 rounded-full hover:bg-[#d8b45c] transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95 cursor-pointer"
         aria-label="Next image"
         title="Next (Right Arrow)"
       >
-        <ChevronRight size={24} />
+        <ChevronRight size={28} />
       </button>
 
-      {/* Main Lightbox Frame */}
+      {/* Enlarged Image and Caption Container */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="max-w-5xl w-full flex flex-col items-center justify-center relative mx-auto"
+        className="max-w-5xl w-full flex flex-col items-center justify-center relative mx-auto my-auto z-10"
       >
-        <div className="relative w-full h-[52vh] sm:h-[60vh] md:h-[66vh] max-h-[620px] min-h-[260px] sm:min-h-[380px] flex items-center justify-center bg-[#050b18]/90 border border-[#d8b45c]/40 rounded-2xl p-2 sm:p-4 shadow-2xl shadow-black overflow-hidden backdrop-blur-md">
-          {/* Loading Spinner */}
-          {loading && !hasError && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-[#d8b45c] z-10 bg-[#050b18]/80">
-              <Loader2 size={32} className="animate-spin" />
-              <span className="text-xs uppercase tracking-widest font-serif">Loading View...</span>
-            </div>
-          )}
-
-          {/* Active Image */}
-          {!hasError ? (
-            <img
-              src={currentImage.url}
-              alt={currentImage.title}
-              onLoad={() => setLoading(false)}
-              onError={() => {
-                setLoading(false);
-                setHasError(true);
-              }}
-              className={`max-h-[62vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl transition-opacity duration-300 ${
-                loading ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
-          ) : (
-            <div className="flex flex-col items-center justify-center p-8 text-center space-y-3 bg-[#071329] rounded-xl border border-[#d8b45c]/30 max-w-md my-8">
-              <Sparkles size={36} className="text-[#d8b45c]" />
-              <h4 className="font-serif text-lg text-white font-medium">
-                {currentImage.title}
-              </h4>
-              <p className="text-xs text-gray-300">
-                Experience the beauty and serenity of our mountain retreat.
-              </p>
-              {currentImage.category && (
-                <span className="px-3 py-1 rounded-full bg-[#d8b45c]/20 text-[#f0d795] text-[10px] uppercase font-semibold border border-[#d8b45c]/40">
-                  {currentImage.category}
-                </span>
-              )}
-            </div>
-          )}
+        {/* Main Image Frame */}
+        <div className="relative max-h-[76vh] flex items-center justify-center overflow-hidden rounded-2xl shadow-2xl border border-[#d8b45c]/40 bg-[#050b18]">
+          <img
+            key={currentImage.url}
+            src={currentImage.url}
+            alt={currentImage.title}
+            loading="eager"
+            className="max-h-[74vh] w-auto max-w-full object-contain rounded-xl shadow-2xl block"
+          />
         </div>
 
-        {/* Caption Bar */}
+        {/* Caption Info */}
         <div className="mt-4 text-center space-y-1.5 px-4">
-          <p className="text-[#f0d795] font-serif text-base sm:text-xl font-medium tracking-wide">
+          <p className="text-[#f0d795] font-serif text-lg sm:text-2xl font-medium tracking-wide drop-shadow-md">
             {currentImage.title}
           </p>
-          <div className="flex items-center justify-center gap-2.5 text-xs text-gray-300">
+          <div className="flex items-center justify-center gap-3 text-xs text-gray-400">
             {currentImage.category && (
-              <span className="px-2.5 py-0.5 rounded-full bg-[#d8b45c]/20 text-[#f0d795] text-[10px] font-semibold uppercase tracking-wider border border-[#d8b45c]/30">
+              <span className="px-3 py-0.5 rounded-full bg-[#d8b45c]/20 text-[#f0d795] text-[11px] font-semibold uppercase tracking-wider border border-[#d8b45c]/30">
                 {currentImage.category}
               </span>
             )}
-            <span className="text-gray-400">
+            <span className="text-gray-300 font-medium">
               {safeIndex + 1} of {images.length}
             </span>
           </div>
@@ -168,4 +138,6 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };

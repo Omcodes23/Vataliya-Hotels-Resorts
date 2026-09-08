@@ -38,15 +38,15 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
   };
 
   return (
-    <div className="bg-[#050b18] text-[#f6f4ef] min-h-screen pt-[64px] sm:pt-[70px] animate-fadeIn">
+    <div className="bg-[#050b18] text-[#f6f4ef] min-h-screen pt-[68px] sm:pt-[76px]">
 
-      {/* Breadcrumb Bar Seamlessly Connected Under Fixed Navbar */}
-      <div className="bg-[#071329] border-b border-[#d8b45c]/25 py-3 sm:py-3.5 px-4 sm:px-8 shadow-md">
+      {/* Navigation Route & Breadcrumb Path Bar */}
+      <div className="bg-[#071329] border-b border-[#d8b45c]/25 py-2.5 sm:py-3 px-4 sm:px-8 shadow-md">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-gray-400">
             <button
               onClick={onBack}
-              className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-semibold uppercase tracking-wider"
+              className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-semibold uppercase tracking-wider cursor-pointer"
             >
               <ArrowLeft size={14} /> Back to Destinations
             </button>
@@ -78,7 +78,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[640px] flex items-end pb-16 px-4 sm:px-8 overflow-hidden">
+      <section className="relative min-h-[640px] sm:min-h-[680px] flex items-end pt-12 pb-16 sm:pb-20 px-4 sm:px-8 overflow-hidden">
         {/* Hero Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
