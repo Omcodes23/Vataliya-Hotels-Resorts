@@ -8,6 +8,7 @@ import {
 import { DESTINATIONS_DATA, HOTELS_DATA, VATALIYA_CORPORATE_INFO } from './data/hotelsData';
 import { Navbar } from './components/Navbar';
 import { HotelDetailPage } from './components/HotelDetailPage';
+import { HotelBrandLogo } from './components/HotelBrandLogo';
 import { Footer } from './components/Footer';
 
 const HERO_IMG = 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1920';
@@ -195,7 +196,7 @@ export function App() {
                     <strong className="text-[#d8b45c] text-sm">01</strong> Shimla: Manaw Valley Resort (4★)
                   </span>
                   <span className="flex items-center gap-2">
-                    <strong className="text-[#d8b45c] text-sm">02</strong> Manali: Hotel Indrasan (3★)
+                    <strong className="text-[#d8b45c] text-sm">02</strong> Manali: Hotel Indrasan & The Fyra Ashapuri Snow Inn
                   </span>
                   <span className="flex items-center gap-2">
                     <strong className="text-[#d8b45c] text-sm">03</strong> Central B2B Operations
@@ -206,11 +207,11 @@ export function App() {
               {/* Right Brand Emblem Box */}
               <div className="lg:col-span-4 hidden lg:flex flex-col items-center">
                 <div className="p-8 rounded-3xl bg-gradient-to-br from-[#081a38]/90 via-[#071329]/90 to-[#050b18]/90 border border-[#d8b45c]/40 shadow-2xl backdrop-blur-xl text-center space-y-4 max-w-sm">
-                  <div className="w-24 h-24 mx-auto rounded-2xl overflow-hidden bg-[#081a38] border border-[#d8b45c]/50 p-2 flex items-center justify-center shadow-lg">
+                  <div className="w-24 h-24 mx-auto rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d2244] via-[#07152b] to-[#030914] border border-[#d8b45c]/60 p-0 flex items-center justify-center shadow-lg">
                     <img
                       src="/vataliya1.png"
                       alt="Vataliya Logo"
-                      className="w-full h-full object-contain rounded-xl"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   <div>
@@ -257,7 +258,7 @@ export function App() {
               </div>
 
               {/* Minimalist Hotel Brand Cards Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {Object.values(HOTELS_DATA).map((hotel) => (
                   <div
                     key={hotel.id}
@@ -265,11 +266,10 @@ export function App() {
                     className="group cursor-pointer p-7 rounded-2xl bg-gradient-to-br from-[#081a38] to-[#050b18] border border-[#d8b45c]/35 hover:border-[#d8b45c] hover:shadow-2xl hover:shadow-[#d8b45c]/10 transition-all duration-300 flex flex-col items-center text-center space-y-4"
                   >
                     {/* Hotel Logo Container */}
-                    <div className="w-48 h-24 rounded-2xl bg-white p-3 flex items-center justify-center group-hover:scale-105 transition shadow-md overflow-hidden border border-white/10">
-                      <img
-                        src={hotel.logoUrl}
-                        alt={`${hotel.name} Logo`}
-                        className="max-h-full max-w-full object-contain"
+                    <div className="w-52 h-24 rounded-2xl bg-white p-3 flex items-center justify-center group-hover:scale-105 transition shadow-md overflow-hidden border border-white/10">
+                      <HotelBrandLogo
+                        hotel={hotel}
+                        className="w-full h-full"
                       />
                     </div>
 

@@ -78,7 +78,7 @@ export interface DestinationLocation {
   heroImage: string;
   elevation: string;
   bestTime: string;
-  hotel: HotelData;
+  hotels: HotelData[];
 }
 
 export const HOTELS_DATA: Record<string, HotelData> = {
@@ -468,6 +468,211 @@ export const HOTELS_DATA: Record<string, HotelData> = {
       { name: 'Jogini Waterfall', distance: '6.8 km', description: 'Scenic trek passing through orchards to a cascading Himalayan waterfall.' },
     ],
   },
+
+  'the-fyra-ashapuri-snow-inn': {
+    id: 'the-fyra-ashapuri-snow-inn',
+    slug: 'the-fyra-ashapuri-snow-inn',
+    name: 'The Fyra Ashapuri Snow Inn',
+    tagline: 'Experience the true essence of mountain hospitality in the heart of Manali · Operated by Vataliya',
+    starRating: 4,
+    locationName: 'Near Himachal Gramin Bank, Prini, Manali',
+    city: 'Manali',
+    state: 'Himachal Pradesh',
+    propertyAddress: 'FYRA Ashapuri Snow Inn, Near Himachal Gramin Bank, Prini, Manali, Himachal Pradesh - 175131',
+    vataliyaCentralPhone: '+91 91066 62535',
+    hotelInquiryEmail: 'aashapurisnowinn@vataliyas.com',
+    centralBookingEmail: 'booking@vataliyas.com',
+    whatsappNumber: '919106662535',
+    logoUrl: 'https://fyragroup.in/assets/fyra-logo.png',
+    heroImage: 'https://images.pexels.com/photos/37108959/pexels-photo-37108959.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    bannerImages: [
+      'https://images.pexels.com/photos/37108959/pexels-photo-37108959.jpeg?auto=compress&cs=tinysrgb&w=1920',
+      'https://images.pexels.com/photos/2725675/pexels-photo-2725675.jpeg?auto=compress&cs=tinysrgb&w=1920',
+      'https://images.pexels.com/photos/8082217/pexels-photo-8082217.jpeg?auto=compress&cs=tinysrgb&w=1920',
+      'https://images.pexels.com/photos/17057034/pexels-photo-17057034.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    ],
+    about: {
+      heading: 'Breathtaking Beauty, Exceptional Warmth',
+      description1:
+        'Experience the perfect blend of comfort, elegance, and breathtaking mountain beauty at FYRA Ashapuri Snow Inn. Whether you are traveling with family, friends, or your loved one, our hotel offers a peaceful retreat with modern amenities and warm hospitality in the heart of Manali.',
+      description2:
+        'Operated in partnership with Vataliya Hotels & Resorts, the property features 15 well-appointed rooms equipped with hot & cold air conditioning, private balconies with snow views, a multi-cuisine restaurant, lush landscaped lawn, and secure private parking for an unforgettable Himalayan stay.',
+      keyStats: [
+        { label: 'Room Count', value: '15 Well-Appointed Rooms' },
+        { label: 'Accommodations', value: 'Super Deluxe, Deluxe & Family Suite' },
+        { label: 'Special Feature', value: 'Hot & Cold AC & Private Balconies' },
+        { label: 'Setting', value: 'Prini, Near Gramin Bank' },
+      ],
+    },
+    highlights: [
+      {
+        title: 'Beautiful Landscaped Lawn',
+        description: 'Relax in our lush green lawn, where you can enjoy morning tea, evening gatherings, and the refreshing mountain atmosphere.',
+        icon: 'Sparkles',
+      },
+      {
+        title: 'Secure Private Parking',
+        description: 'Travel with complete peace of mind with our dedicated private parking facility, ensuring convenience and security for your vehicle.',
+        icon: 'ShieldCheck',
+      },
+      {
+        title: 'Balcony Rooms with Breathtaking Views',
+        description: 'Unobstructed vistas of snow-capped peaks and serene pine valleys from spacious private step-out balconies.',
+        icon: 'Mountain',
+      },
+      {
+        title: 'Delicious Multi-Cuisine Dining',
+        description: 'Indulge in Indian Specialties, Chinese Classics, Continental favorites, and authentic local Himachali dishes.',
+        icon: 'UtensilsCrossed',
+      },
+      {
+        title: 'Spacious Family Rooms & Suites',
+        description: 'Generously proportioned 750 sq. ft. Family Suites and Super Deluxe accommodations designed for comfort and group relaxation.',
+        icon: 'Coffee',
+      },
+      {
+        title: '24-Hour Front Desk & Warmth',
+        description: 'Attentive round-the-clock front desk assistance, room heating/AC, high-speed Wi-Fi, and personalized mountain hospitality.',
+        icon: 'Compass',
+      },
+    ],
+    rooms: [
+      {
+        id: 'super-deluxe-room',
+        name: 'Super Deluxe Room',
+        tagline: 'Private Balcony with Stunning Mountain Views (10 Rooms Available)',
+        description:
+          'Our Super Deluxe Rooms (10 available) are perfect for guests who want to enjoy stunning mountain views from their private balcony. These rooms feature hot & cold air conditioning, premium interiors, and modern washrooms for maximum comfort.',
+        image: 'https://images.pexels.com/photos/2725675/pexels-photo-2725675.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        size: '450 sq.ft',
+        occupancy: '2 Guests',
+        bed: 'King Size Bed',
+        view: 'Private Balcony & Mountain Views',
+        amenities: [
+          'Private Mountain View Balcony',
+          'Hot & Cold Air Conditioning',
+          'Premium Wooden Interiors',
+          'Modern Attached Washroom',
+          'High-Speed Wi-Fi',
+          'Smart LED TV',
+          'Tea & Coffee Station',
+          '24/7 Hot Water',
+        ],
+      },
+      {
+        id: 'deluxe-room',
+        name: 'Deluxe Room',
+        tagline: 'Cozy & Comfortable Mountain Retreat (4 Rooms Available)',
+        description:
+          'Designed for cozy and comfortable stays, our Deluxe Rooms (4 available) offer all essential amenities in an elegant setting. These rooms feature stylish interiors and hot & cold air conditioning (Note: These rooms do not have a balcony).',
+        image: 'https://images.pexels.com/photos/8082217/pexels-photo-8082217.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        size: '400 sq.ft',
+        occupancy: '2 Guests',
+        bed: 'Comfortable King Bed',
+        view: 'Mountain Valley Window View',
+        amenities: [
+          'Hot & Cold Air Conditioning',
+          'Stylish Elegant Interiors',
+          'Modern Washroom with Shower',
+          'High-Speed Wi-Fi',
+          'LED TV',
+          'Tea & Coffee Maker',
+          'Daily Housekeeping',
+          '24/7 Hot Water',
+        ],
+      },
+      {
+        id: 'family-suite',
+        name: 'Family Suite',
+        tagline: 'Expansive 750 Sq. Ft. Suite Ideal for Families & Groups (1 Suite Available)',
+        description:
+          'A spacious room ideal for families and groups seeking extra comfort and convenience. This room provides ample space for a relaxed stay in the heart of Manali with premium amenities and mountain scenery.',
+        image: 'https://images.pexels.com/photos/33803745/pexels-photo-33803745.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        size: '750 sq.ft',
+        occupancy: '4 Guests',
+        bed: 'Master King Bed + Twin Beds / Living Lounge',
+        view: 'Panoramic Himalayan Valley Views',
+        amenities: [
+          'Spacious 750 sq.ft Floor Plan',
+          'Accommodates 4 Guests',
+          'Hot & Cold Air Conditioning',
+          'Separate Living & Seating Lounge',
+          'Premium Washroom Suite',
+          'High-Speed Wi-Fi',
+          'Smart LED TV',
+          'In-Room Tea & Coffee Bar',
+        ],
+      },
+    ],
+    dining: {
+      title: 'Indulge in Flavors — Multi-Cuisine Restaurant',
+      tagline: 'Indian Specialties, Chinese Classics, Continental & Himachali Local',
+      description:
+        '"Indulge in a delightful culinary experience at our in-house Multi-Cuisine Restaurant, serving a wide range of Indian, Chinese, Continental, and local Himachali dishes prepared with fresh ingredients and exceptional care."',
+      image: 'https://images.pexels.com/photos/17057034/pexels-photo-17057034.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      features: [
+        'Indian Specialties & Royal Gravies',
+        'Chinese Classics & Sizzlers',
+        'Continental Grills & Pasta',
+        'Authentic Local Himachali Cuisine',
+      ],
+      timing: '7:30 AM – 10:30 PM',
+    },
+    experiences: [
+      {
+        title: 'Relaxation on Beautiful Landscaped Lawn',
+        description: 'Enjoy morning tea, evening gatherings, and refreshing mountain breezes in the serene manicured garden.',
+        image: 'https://images.pexels.com/photos/37108959/pexels-photo-37108959.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        tag: 'Peaceful Retreat',
+      },
+      {
+        title: 'Prini Apple Orchards & Local Walks',
+        description: 'Stroll along peaceful country lanes surrounded by apple trees, rustic Himachali hamlets, and cedar trees.',
+        image: 'https://images.pexels.com/photos/9348873/pexels-photo-9348873.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        tag: 'Village Walk',
+      },
+      {
+        title: 'Solang Valley & Atal Tunnel Excursions',
+        description: 'Exciting day tours to Solang Valley snow point, paragliding sites, Rohtang Pass route, and Sissu.',
+        image: 'https://images.pexels.com/photos/18884372/pexels-photo-18884372.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        tag: 'Adventure Day',
+      },
+    ],
+    amenitiesList: [
+      '15 Well-Appointed Rooms',
+      'Hot & Cold Air Conditioning',
+      'Beautiful Landscaped Lawn',
+      'Multi-Cuisine Cafe & Restaurant',
+      'Secure Private Parking',
+      'Balcony Rooms with Mountain Views',
+      'Family-Friendly Suites (750 sq.ft)',
+      '24-Hour Front Desk',
+      'High-Speed Wi-Fi',
+      'Scenic Surroundings in Prini',
+      '24/7 Hot & Cold Water',
+      'Power Backup',
+      'Daily Housekeeping',
+      'Laundry & Dry Cleaning Service',
+    ],
+    galleryImages: [
+      { url: 'https://images.pexels.com/photos/37108959/pexels-photo-37108959.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Property Exterior at Twilight', category: 'Property' },
+      { url: 'https://images.pexels.com/photos/2725675/pexels-photo-2725675.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Deluxe Room Wooden Ambiance', category: 'Rooms' },
+      { url: 'https://images.pexels.com/photos/8082217/pexels-photo-8082217.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Premium Valley Balcony View', category: 'Rooms' },
+      { url: 'https://images.pexels.com/photos/33803745/pexels-photo-33803745.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Executive Suite Living Space', category: 'Rooms' },
+      { url: 'https://images.pexels.com/photos/17057034/pexels-photo-17057034.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Gourmet Restaurant Dining', category: 'Dining' },
+      { url: 'https://images.pexels.com/photos/9348873/pexels-photo-9348873.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Panoramic Snow Peak Horizons', category: 'Views' },
+      { url: 'https://images.pexels.com/photos/1872892/pexels-photo-1872892.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Terrace Garden Dining Lounge', category: 'Dining' },
+      { url: 'https://images.pexels.com/photos/14011664/pexels-photo-14011664.jpeg?auto=compress&cs=tinysrgb&w=1200', title: 'Lobby & Reception Ambiance', category: 'Property' },
+    ],
+    attractions: [
+      { name: 'Mall Road Manali', distance: '3.8 km', description: 'Vibrant town center for shopping, cafes, and handicrafts.' },
+      { name: 'Hadimba Devi Temple', distance: '5.5 km', description: 'Historic wooden temple nestled in towering cedar forests.' },
+      { name: 'Solang Valley', distance: '16 km', description: 'Premier adventure hub for paragliding, skiing, and snow sports.' },
+      { name: 'Atal Tunnel & Sissu', distance: '32 km', description: 'Marvel of engineering opening into magical snow landscapes of Lahaul.' },
+      { name: 'Naggar Castle', distance: '15 km', description: 'Ancient heritage castle with breathtaking Beas valley panoramas.' },
+      { name: 'Vashisht Hot Springs', distance: '6.5 km', description: 'Natural sulfur thermal baths and ancient stone shrines.' },
+    ],
+  },
 };
 
 export const DESTINATIONS_DATA: DestinationLocation[] = [
@@ -483,7 +688,7 @@ export const DESTINATIONS_DATA: DestinationLocation[] = [
     heroImage: 'https://manawvalleyresort.com/gallery/1.jpg',
     elevation: '2,276m',
     bestTime: 'Year-Round (Snow in Dec–Feb, Summer in Mar–Jun)',
-    hotel: HOTELS_DATA['manaw-valley-resort'],
+    hotels: [HOTELS_DATA['manaw-valley-resort']],
   },
   {
     id: 'manali',
@@ -493,11 +698,14 @@ export const DESTINATIONS_DATA: DestinationLocation[] = [
     state: 'Himachal Pradesh',
     tagline: 'Valley of the Gods · Snow Peaks & Apple Orchards',
     description:
-      'A breathtaking mountain paradise surrounded by snow-capped Pir Panjal peaks, meandering rivers, and lush apple orchards. Experience serene hospitality at Hotel Indrasan in Prini.',
+      'A breathtaking mountain paradise surrounded by snow-capped Pir Panjal peaks, meandering rivers, and lush apple orchards. Home to our partner sanctuaries Hotel Indrasan and The Fyra Ashapuri Snow Inn in Prini.',
     heroImage: 'https://www.hotelindrasanmanali.com/images/indrasan.jpg',
     elevation: '2,050m',
     bestTime: 'Year-Round (Adventure & Snow in Winter, Lush Greenery in Spring)',
-    hotel: HOTELS_DATA['hotel-indrasan-manali'],
+    hotels: [
+      HOTELS_DATA['hotel-indrasan-manali'],
+      HOTELS_DATA['the-fyra-ashapuri-snow-inn'],
+    ],
   },
 ];
 

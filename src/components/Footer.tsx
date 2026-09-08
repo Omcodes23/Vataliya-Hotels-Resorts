@@ -20,11 +20,11 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 1: Brand & Instagram */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-1 rounded-lg bg-[#081a38] border border-[#d8b45c]/40">
+              <div className="p-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d2244] via-[#07152b] to-[#030914] border border-[#d8b45c]/60 shadow-lg flex-shrink-0">
                 <img
                   src="/vataliya1.png"
                   alt="Vataliya Hotels & Resorts Logo"
-                  className="h-12 w-auto object-contain"
+                  className="h-12 w-auto object-contain block"
                 />
               </div>
               <div>
@@ -73,7 +73,15 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateHotel('hotel-indrasan-manali')}
                   className="hover:text-[#f0d795] transition text-left"
                 >
-                  📍 Manali (3★ Luxury)
+                  📍 Manali: Hotel Indrasan (3★)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigateHotel('the-fyra-ashapuri-snow-inn')}
+                  className="hover:text-[#f0d795] transition text-left"
+                >
+                  📍 Manali: The Fyra Ashapuri (4★)
                 </button>
               </li>
               <li>
@@ -122,6 +130,21 @@ export const Footer: React.FC<FooterProps> = ({
                   className="text-gray-400 hover:text-[#d8b45c] text-[11px] block"
                 >
                   {HOTELS_DATA['hotel-indrasan-manali'].hotelInquiryEmail}
+                </a>
+              </li>
+
+              <li className="space-y-1">
+                <button
+                  onClick={() => onNavigateHotel('the-fyra-ashapuri-snow-inn')}
+                  className="font-medium text-white hover:text-[#f0d795] transition text-left block"
+                >
+                  The Fyra Ashapuri Snow Inn (Manali)
+                </button>
+                <a
+                  href={`mailto:${HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelInquiryEmail}`}
+                  className="text-gray-400 hover:text-[#d8b45c] text-[11px] block"
+                >
+                  {HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelInquiryEmail}
                 </a>
               </li>
             </ul>

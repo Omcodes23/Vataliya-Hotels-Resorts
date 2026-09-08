@@ -47,20 +47,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             onNavigateHome();
             closeAll();
           }}
-          className="flex items-center gap-3.5 text-left group"
+          className="flex items-center gap-2.5 sm:gap-3.5 text-left group min-w-0"
         >
-          <div className="relative flex items-center justify-center p-1.5 rounded-lg bg-[#081a38] border border-[#d8b45c]/50 group-hover:border-[#d8b45c] transition shadow-md">
+          <div className="relative flex items-center justify-center p-0 rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d2244] via-[#07152b] to-[#030914] border border-[#d8b45c]/60 group-hover:border-[#d8b45c] group-hover:shadow-[0_0_20px_rgba(216,180,92,0.35)] transition-all duration-300 flex-shrink-0 shadow-lg">
             <img
               src="/vataliya1.png"
               alt="Vataliya Hotels & Resorts Logo"
-              className="h-10 sm:h-12 w-auto object-contain"
+              className="h-10 sm:h-12 w-auto object-contain block group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <div>
-            <span className="block font-serif text-base sm:text-lg font-semibold tracking-[0.2em] text-white group-hover:text-[#f0d795] transition">
+          <div className="min-w-0">
+            <span className="block font-serif text-sm sm:text-lg font-semibold tracking-[0.15em] sm:tracking-[0.2em] text-white group-hover:text-[#f0d795] transition truncate">
               VATALIYA
             </span>
-            <span className="block text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[#d8b45c]">
+            <span className="block text-[7.5px] sm:text-[9px] tracking-[0.22em] sm:tracking-[0.3em] uppercase text-[#d8b45c] truncate">
               Hotels & Resorts
             </span>
           </div>
@@ -152,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             <h4 className="font-serif text-base text-white font-medium group-hover:text-[#f0d795] transition">
                               Manali
                             </h4>
-                            <span className="text-[10px] text-gray-400">Himachal Pradesh · 3★ Mountain Haven</span>
+                            <span className="text-[10px] text-gray-400">Himachal Pradesh · 2 Luxury Properties</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-1 text-[11px] text-[#d8b45c] font-medium">
@@ -163,7 +163,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </div>
                   </div>
                 ) : (
-                  /* STEP 2: ONLY HOTEL FOR THAT SELECTED LOCATION APPEARS */
+                  /* STEP 2: HOTELS FOR THAT SELECTED LOCATION APPEAR */
                   <div className="space-y-4 animate-fadeIn">
                     <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
                       <button
@@ -173,41 +173,43 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <ArrowLeft size={12} /> Change Location
                       </button>
                       <span className="text-[10px] text-gray-300">
-                        Location: <strong className="text-white">{selectedDestination.name}</strong>
+                        Location: <strong className="text-white">{selectedDestination.name}</strong> ({selectedDestination.hotels.length} {selectedDestination.hotels.length === 1 ? 'Property' : 'Properties'})
                       </span>
                     </div>
 
-                    <div
-                      onClick={() => {
-                        onNavigateHotel(selectedDestination.hotel.slug);
-                        closeAll();
-                      }}
-                      className="cursor-pointer p-4 rounded-xl bg-gradient-to-br from-[#081a38] to-[#050b18] border border-[#d8b45c]/50 hover:border-[#d8b45c] hover:shadow-xl hover:shadow-[#d8b45c]/10 transition group/card space-y-3"
-                    >
-                      <div
-                        className="h-36 rounded-lg bg-cover bg-center relative overflow-hidden"
-                        style={{ backgroundImage: `url(${selectedDestination.hotel.heroImage})` }}
-                      >
-                        <span className="absolute top-2 left-2 px-2.5 py-1 rounded bg-black/75 text-[9px] text-[#f0d795] font-semibold flex items-center gap-1">
-                          <Star size={10} fill="#d8b45c" className="text-[#d8b45c]" />
-                          {selectedDestination.hotel.starRating}-Star Property
-                        </span>
-                      </div>
+                    <div className="space-y-2.5 max-h-[360px] overflow-y-auto pr-1">
+                      {selectedDestination.hotels.map((hotel) => (
+                        <div
+                          key={hotel.id}
+                          onClick={() => {
+                            onNavigateHotel(hotel.slug);
+                            closeAll();
+                          }}
+                          className="cursor-pointer p-3.5 rounded-xl bg-gradient-to-br from-[#081a38] to-[#050b18] border border-[#d8b45c]/40 hover:border-[#d8b45c] hover:shadow-xl hover:shadow-[#d8b45c]/10 transition group/card flex items-center gap-3.5"
+                        >
+                          <div
+                            className="w-24 h-20 rounded-lg bg-cover bg-center relative overflow-hidden flex-shrink-0"
+                            style={{ backgroundImage: `url(${hotel.heroImage})` }}
+                          >
+                            <span className="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-black/80 text-[8px] text-[#f0d795] font-semibold flex items-center gap-0.5">
+                              <Star size={8} fill="#d8b45c" className="text-[#d8b45c]" />
+                              {hotel.starRating}★
+                            </span>
+                          </div>
 
-                      <div>
-                        <h5 className="font-serif text-base text-white font-medium group-hover/card:text-[#d8b45c] transition">
-                          {selectedDestination.hotel.name}
-                        </h5>
-                        <p className="text-[11px] text-gray-300 mt-0.5">
-                          {selectedDestination.hotel.locationName}
-                        </p>
-                      </div>
-
-                      <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                        <span className="text-xs text-[#f0d795] font-medium inline-flex items-center gap-1.5 group-hover/card:translate-x-1 transition-transform">
-                          Explore Property & Details <ArrowRight size={13} />
-                        </span>
-                      </div>
+                          <div className="flex-1 min-w-0">
+                            <h5 className="font-serif text-sm text-white font-medium group-hover/card:text-[#d8b45c] transition truncate">
+                              {hotel.name}
+                            </h5>
+                            <p className="text-[10px] text-gray-300 mt-0.5 truncate">
+                              {hotel.locationName}
+                            </p>
+                            <span className="inline-flex items-center gap-1 text-[11px] text-[#f0d795] font-medium mt-1.5 group-hover/card:translate-x-1 transition-transform">
+                              Explore Property <ArrowRight size={11} />
+                            </span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -258,30 +260,47 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
         </nav>
 
-        {/* Right Phone Contact Link */}
-        <div className="flex items-center gap-4">
+        {/* Right Phone Contact Link & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3.5 flex-shrink-0">
           <a
             href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-            className="flex items-center gap-2 text-xs text-[#f0d795] hover:text-white font-medium tracking-wider transition px-3 py-1.5 rounded-lg bg-white/[0.04] border border-[#d8b45c]/30"
+            className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-[#f0d795] hover:text-white font-medium tracking-wider transition px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#d8b45c]/15 to-[#f0d795]/5 border border-[#d8b45c]/40 hover:border-[#d8b45c] whitespace-nowrap shadow-sm"
           >
-            <Phone size={13} className="text-[#d8b45c]" />
-            <span>{VATALIYA_CORPORATE_INFO.phoneDisplay}</span>
+            <Phone size={12} className="text-[#d8b45c] flex-shrink-0" />
+            <span className="hidden sm:inline">{VATALIYA_CORPORATE_INFO.phoneDisplay}</span>
+            <span className="inline sm:hidden text-[10.5px] font-semibold">{VATALIYA_CORPORATE_INFO.phoneDisplay}</span>
           </a>
 
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-white hover:text-[#d8b45c] transition rounded-md border border-white/10"
+            className="lg:hidden p-2 text-white hover:text-[#d8b45c] transition rounded-xl border border-white/15 bg-white/[0.03] hover:border-[#d8b45c]/40"
             aria-label="Toggle navigation"
           >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#050b18] border-b border-[#d8b45c]/30 px-6 py-6 space-y-4 text-white text-sm uppercase tracking-widest animate-fadeIn">
+        <div className="lg:hidden bg-[#050b18] border-b border-[#d8b45c]/30 px-5 sm:px-6 py-5 space-y-4 text-white text-sm uppercase tracking-widest animate-fadeIn shadow-2xl">
+          {/* Mobile Direct Central Call Banner */}
+          <a
+            href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
+            className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#d8b45c]/20 via-[#f0d795]/10 to-transparent border border-[#d8b45c]/40 text-[#f0d795] normal-case"
+          >
+            <div className="flex items-center gap-2.5">
+              <Phone size={15} className="text-[#d8b45c]" />
+              <span className="text-xs font-semibold tracking-normal">
+                Central Sales: {VATALIYA_CORPORATE_INFO.phoneDisplay}
+              </span>
+            </div>
+            <span className="text-[10px] uppercase font-bold tracking-wider bg-[#d8b45c] text-black px-2.5 py-1 rounded-md">
+              Tap to Call
+            </span>
+          </a>
+
           <button
             onClick={() => {
               onNavigateHome();
@@ -337,7 +356,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {mobileSelectedLocation === 'manali' && (
                 <div className="p-3 bg-[#071329] border-t border-white/10 space-y-2">
-                  <span className="block text-[10px] text-gray-400">Hotel in Manali:</span>
+                  <span className="block text-[10px] text-gray-400">Hotels in Manali (2):</span>
                   <button
                     onClick={() => {
                       onNavigateHotel('hotel-indrasan-manali');
@@ -346,6 +365,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className="w-full text-left p-2.5 rounded bg-white/[0.04] text-[#f0d795] text-xs font-serif flex items-center justify-between"
                   >
                     <span>➔ Hotel Indrasan (3★)</span>
+                    <ArrowRight size={13} />
+                  </button>
+                  <button
+                    onClick={() => {
+                      onNavigateHotel('the-fyra-ashapuri-snow-inn');
+                      closeAll();
+                    }}
+                    className="w-full text-left p-2.5 rounded bg-white/[0.04] text-[#f0d795] text-xs font-serif flex items-center justify-between"
+                  >
+                    <span>➔ The Fyra Ashapuri Snow Inn (4★)</span>
                     <ArrowRight size={13} />
                   </button>
                 </div>

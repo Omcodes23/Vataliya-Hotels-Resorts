@@ -38,15 +38,15 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
   };
 
   return (
-    <div className="bg-[#050b18] text-[#f6f4ef] min-h-screen pt-20 animate-fadeIn">
+    <div className="bg-[#050b18] text-[#f6f4ef] min-h-screen pt-[64px] sm:pt-[70px] animate-fadeIn">
 
-      {/* Breadcrumb Bar */}
-      <div className="bg-[#071329] border-b border-[#d8b45c]/20 py-3.5 px-4 sm:px-8">
+      {/* Breadcrumb Bar Seamlessly Connected Under Fixed Navbar */}
+      <div className="bg-[#071329] border-b border-[#d8b45c]/25 py-3 sm:py-3.5 px-4 sm:px-8 shadow-md">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2 text-gray-400">
             <button
               onClick={onBack}
-              className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-medium uppercase tracking-wider"
+              className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-semibold uppercase tracking-wider"
             >
               <ArrowLeft size={14} /> Back to Destinations
             </button>
