@@ -59,13 +59,22 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
-            <a
-              href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-              className="flex items-center gap-1.5 text-gray-300 hover:text-[#d8b45c] transition"
-            >
+            <div className="flex items-center gap-2 text-gray-300">
               <Phone size={13} className="text-[#d8b45c]" />
-              <span>{VATALIYA_CORPORATE_INFO.phoneDisplay}</span>
-            </a>
+              <a
+                href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
+                className="hover:text-[#d8b45c] transition"
+              >
+                {VATALIYA_CORPORATE_INFO.phoneDisplay}
+              </a>
+              <span className="text-gray-600">|</span>
+              <a
+                href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
+                className="hover:text-[#d8b45c] transition"
+              >
+                {VATALIYA_CORPORATE_INFO.phone2Display}
+              </a>
+            </div>
             <a
               href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry for ${encodeURIComponent(hotel.name + ' by Vataliya')}`}
               className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-medium"
@@ -544,11 +553,33 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Phone size={18} className="text-[#d8b45c] flex-shrink-0" />
-                  <span><strong>Direct Phone:</strong> <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:text-white underline">{VATALIYA_CORPORATE_INFO.phoneDisplay}</a></span>
+                  <span>
+                    <strong>Direct Phones:</strong>{' '}
+                    <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:text-white underline">
+                      {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                    </a>{' '}
+                    |{' '}
+                    <a href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`} className="hover:text-white underline">
+                      {VATALIYA_CORPORATE_INFO.phone2Display}
+                    </a>
+                  </span>
                 </p>
-                <p className="flex items-center gap-2.5">
-                  <Mail size={18} className="text-[#d8b45c] flex-shrink-0" />
-                  <span><strong>Property Email:</strong> <a href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}`} className="text-[#f0d795] hover:underline">{hotel.hotelInquiryEmail}</a></span>
+                <p className="flex items-start gap-2.5">
+                  <Mail size={18} className="text-[#d8b45c] flex-shrink-0 mt-0.5" />
+                  <span>
+                    <strong>Property Inquiry:</strong>{' '}
+                    <a href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}`} className="text-[#f0d795] hover:underline">
+                      {hotel.hotelInquiryEmail}
+                    </a>
+                    {hotel.hotelSecondaryEmail && (
+                      <>
+                        {' '}|{' '}
+                        <a href={`mailto:${hotel.hotelSecondaryEmail}?subject=Inquiry%20for%20${encodeURIComponent(hotel.name + ' by Vataliya')}`} className="text-[#f0d795] hover:underline">
+                          {hotel.hotelSecondaryEmail}
+                        </a>
+                      </>
+                    )}
+                  </span>
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Mail size={18} className="text-[#d8b45c] flex-shrink-0" />
@@ -607,7 +638,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             Inquire for {hotel.name} by Vataliya
           </h2>
           <p className="text-sm text-gray-200">
-            Connect directly via email at <strong className="text-[#f0d795]">{hotel.hotelInquiryEmail}</strong> or call our desk on <strong className="text-white">{VATALIYA_CORPORATE_INFO.phoneDisplay}</strong>.
+            Connect directly via email at <strong className="text-[#f0d795]">{hotel.hotelInquiryEmail}</strong>{hotel.hotelSecondaryEmail && <> | <strong className="text-[#f0d795]">{hotel.hotelSecondaryEmail}</strong></>} or call our desk on <strong className="text-white">{VATALIYA_CORPORATE_INFO.phoneDisplay}</strong> | <strong className="text-white">{VATALIYA_CORPORATE_INFO.phone2Display}</strong>.
           </p>
           <div className="pt-3 flex flex-wrap justify-center gap-3">
             <a

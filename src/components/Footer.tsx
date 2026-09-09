@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateHotel('manaw-valley-resort')}
                   className="hover:text-[#f0d795] transition text-left"
                 >
-                  📍 Shimla (4★ Resort)
+                  📍 Shimla: Manaw Valley (3★)
                 </button>
               </li>
               <li>
@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateHotel('the-fyra-ashapuri-snow-inn')}
                   className="hover:text-[#f0d795] transition text-left"
                 >
-                  📍 Manali: The Fyra Ashapuri (4★)
+                  📍 Manali: Fyra Ashapuri (3★)
                 </button>
               </li>
               <li>
@@ -138,14 +138,24 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateHotel('the-fyra-ashapuri-snow-inn')}
                   className="font-medium text-white hover:text-[#f0d795] transition text-left block"
                 >
-                  The Fyra Ashapuri Snow Inn (Manali)
+                  Fyra Ashapuri Snow Inn (Manali)
                 </button>
-                <a
-                  href={`mailto:${HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelInquiryEmail}`}
-                  className="text-gray-400 hover:text-[#d8b45c] text-[11px] block"
-                >
-                  {HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelInquiryEmail}
-                </a>
+                <div className="space-y-0.5">
+                  <a
+                    href={`mailto:${HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelInquiryEmail}`}
+                    className="text-gray-400 hover:text-[#d8b45c] text-[11px] block"
+                  >
+                    {HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelInquiryEmail}
+                  </a>
+                  {HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelSecondaryEmail && (
+                    <a
+                      href={`mailto:${HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelSecondaryEmail}`}
+                      className="text-gray-400 hover:text-[#d8b45c] text-[11px] block"
+                    >
+                      {HOTELS_DATA['the-fyra-ashapuri-snow-inn'].hotelSecondaryEmail}
+                    </a>
+                  )}
+                </div>
               </li>
             </ul>
           </div>
@@ -156,12 +166,18 @@ export const Footer: React.FC<FooterProps> = ({
               Corporate Office & Central Desk
             </span>
             <div className="space-y-2.5 text-gray-300">
-              <p className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <Phone size={14} className="text-[#d8b45c] flex-shrink-0" />
-                <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:underline font-medium text-white">
-                  {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                </a>
-              </p>
+                <div className="flex flex-wrap items-center gap-1.5 font-medium text-white">
+                  <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:underline">
+                    {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                  </a>
+                  <span className="text-gray-500">|</span>
+                  <a href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`} className="hover:underline">
+                    {VATALIYA_CORPORATE_INFO.phone2Display}
+                  </a>
+                </div>
+              </div>
               <p className="flex items-center gap-2">
                 <Mail size={14} className="text-[#d8b45c] flex-shrink-0" />
                 <a href={`mailto:${VATALIYA_CORPORATE_INFO.bookingEmail}`} className="hover:underline">

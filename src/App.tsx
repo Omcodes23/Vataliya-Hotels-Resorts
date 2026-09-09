@@ -193,10 +193,10 @@ export function App() {
 
                 <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/15 text-xs text-gray-300">
                   <span className="flex items-center gap-2">
-                    <strong className="text-[#d8b45c] text-sm">01</strong> Shimla: Manaw Valley Resort (4★)
+                    <strong className="text-[#d8b45c] text-sm">01</strong> Shimla: Manaw Valley Resort (3★)
                   </span>
                   <span className="flex items-center gap-2">
-                    <strong className="text-[#d8b45c] text-sm">02</strong> Manali: Hotel Indrasan & The Fyra Ashapuri Snow Inn
+                    <strong className="text-[#d8b45c] text-sm">02</strong> Manali: Hotel Indrasan & Fyra Ashapuri Snow Inn
                   </span>
                   <span className="flex items-center gap-2">
                     <strong className="text-[#d8b45c] text-sm">03</strong> Central B2B Operations
@@ -229,12 +229,20 @@ export function App() {
                       <p className="text-xs text-gray-300 leading-relaxed pt-2 border-t border-white/10">
                         Central hospitality desk for property management, group bookings, and stay inquiries.
                       </p>
-                      <div className="pt-1">
+                      <div className="pt-1 flex flex-wrap items-center justify-center gap-1.5 text-xs text-[#f0d795] font-semibold tracking-wider">
+                        <Phone size={13} className="text-[#d8b45c] flex-shrink-0" />
                         <a
                           href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-                          className="inline-flex items-center gap-2 text-xs text-[#f0d795] font-semibold tracking-wider hover:underline"
+                          className="hover:underline"
                         >
-                          <Phone size={13} /> {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                          {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                        </a>
+                        <span className="text-gray-500">|</span>
+                        <a
+                          href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
+                          className="hover:underline"
+                        >
+                          {VATALIYA_CORPORATE_INFO.phone2Display}
                         </a>
                       </div>
                     </div>
@@ -394,12 +402,22 @@ export function App() {
                     Call our central hospitality desk for group bookings, corporate stays, and tariff information.
                   </p>
                   <div className="pt-2 space-y-2 text-sm">
-                    <a
-                      href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-                      className="flex items-center gap-2 text-[#f0d795] font-semibold hover:underline"
-                    >
-                      <Phone size={15} /> {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                    </a>
+                    <div className="flex flex-wrap items-center gap-2 text-[#f0d795] font-semibold">
+                      <Phone size={15} />
+                      <a
+                        href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
+                        className="hover:underline"
+                      >
+                        {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                      </a>
+                      <span className="text-gray-500">|</span>
+                      <a
+                        href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
+                        className="hover:underline"
+                      >
+                        {VATALIYA_CORPORATE_INFO.phone2Display}
+                      </a>
+                    </div>
                     <a
                       href={`mailto:${VATALIYA_CORPORATE_INFO.bookingEmail}`}
                       className="flex items-center gap-2 text-gray-300 hover:text-white"
@@ -432,12 +450,16 @@ export function App() {
                     >
                       <Mail size={15} /> {VATALIYA_CORPORATE_INFO.partnershipsEmail}
                     </a>
-                    <a
-                      href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-                      className="flex items-center gap-2 text-gray-300 hover:text-white"
-                    >
-                      <Phone size={15} /> {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                    </a>
+                    <div className="flex flex-wrap items-center gap-2 text-gray-300">
+                      <Phone size={15} className="text-[#d8b45c]" />
+                      <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:text-white">
+                        {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                      </a>
+                      <span className="text-gray-500">|</span>
+                      <a href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`} className="hover:text-white">
+                        {VATALIYA_CORPORATE_INFO.phone2Display}
+                      </a>
+                    </div>
                   </div>
                 </div>
 

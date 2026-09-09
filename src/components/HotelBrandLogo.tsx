@@ -31,7 +31,7 @@ export const HotelBrandLogo: React.FC<HotelBrandLogoProps> = ({
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className="h-[1px] w-4 bg-[#d8b45c]/50" />
             <span className="text-[8px] tracking-[0.3em] uppercase text-[#d8b45c] font-medium">
-              RESORT · 4★
+              RESORT · 3★
             </span>
             <span className="h-[1px] w-4 bg-[#d8b45c]/50" />
           </div>
@@ -71,7 +71,7 @@ export const HotelBrandLogo: React.FC<HotelBrandLogoProps> = ({
           <div className="flex items-center gap-1.5 text-[#d8b45c] mb-0.5">
             <Sparkles size={13} className="text-[#f0d795]" />
             <span className="text-[9px] tracking-[0.3em] uppercase font-bold text-[#f0d795]">
-              THE FYRA
+              FYRA
             </span>
             <Sparkles size={13} className="text-[#f0d795]" />
           </div>
@@ -81,7 +81,7 @@ export const HotelBrandLogo: React.FC<HotelBrandLogoProps> = ({
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className="h-[1px] w-4 bg-[#d8b45c]/50" />
             <span className="text-[8px] tracking-[0.25em] uppercase text-[#d8b45c] font-medium">
-              MANALI · 4★
+              MANALI · 3★
             </span>
             <span className="h-[1px] w-4 bg-[#d8b45c]/50" />
           </div>
