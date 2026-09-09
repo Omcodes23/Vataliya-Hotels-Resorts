@@ -62,26 +62,43 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             <div className="flex items-center gap-2 text-gray-300">
               <Phone size={13} className="text-[#d8b45c]" />
               <a
-                href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
+                href={`tel:${hotel.vataliyaCentralPhone.replace(/\s+/g, '')}`}
                 className="hover:text-[#d8b45c] transition"
               >
-                {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                {hotel.vataliyaCentralPhone}
               </a>
-              <span className="text-gray-600">|</span>
-              <a
-                href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
-                className="hover:text-[#d8b45c] transition"
-              >
-                {VATALIYA_CORPORATE_INFO.phone2Display}
-              </a>
+              {hotel.vataliyaCentralPhone2 && (
+                <>
+                  <span className="text-gray-600">|</span>
+                  <a
+                    href={`tel:${hotel.vataliyaCentralPhone2.replace(/\s+/g, '')}`}
+                    className="hover:text-[#d8b45c] transition"
+                  >
+                    {hotel.vataliyaCentralPhone2}
+                  </a>
+                </>
+              )}
             </div>
-            <a
-              href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry for ${encodeURIComponent(hotel.name + ' by Vataliya')}`}
-              className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-medium"
-            >
-              <Mail size={13} />
-              <span>{hotel.hotelInquiryEmail}</span>
-            </a>
+            <div className="flex items-center gap-2">
+              <a
+                href={`mailto:${hotel.hotelInquiryEmail}?subject=Inquiry for ${encodeURIComponent(hotel.name + ' by Vataliya')}`}
+                className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-medium"
+              >
+                <Mail size={13} />
+                <span>{hotel.hotelInquiryEmail}</span>
+              </a>
+              {hotel.hotelSecondaryEmail && (
+                <>
+                  <span className="text-gray-600">|</span>
+                  <a
+                    href={`mailto:${hotel.hotelSecondaryEmail}?subject=Inquiry for ${encodeURIComponent(hotel.name + ' by Vataliya')}`}
+                    className="flex items-center gap-1.5 text-[#d8b45c] hover:underline font-medium"
+                  >
+                    <span>{hotel.hotelSecondaryEmail}</span>
+                  </a>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -555,13 +572,17 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
                   <Phone size={18} className="text-[#d8b45c] flex-shrink-0" />
                   <span>
                     <strong>Direct Phones:</strong>{' '}
-                    <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:text-white underline">
-                      {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                    </a>{' '}
-                    |{' '}
-                    <a href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`} className="hover:text-white underline">
-                      {VATALIYA_CORPORATE_INFO.phone2Display}
+                    <a href={`tel:${hotel.vataliyaCentralPhone.replace(/\s+/g, '')}`} className="hover:text-white underline">
+                      {hotel.vataliyaCentralPhone}
                     </a>
+                    {hotel.vataliyaCentralPhone2 && (
+                      <>
+                        {' '}|{' '}
+                        <a href={`tel:${hotel.vataliyaCentralPhone2.replace(/\s+/g, '')}`} className="hover:text-white underline">
+                          {hotel.vataliyaCentralPhone2}
+                        </a>
+                      </>
+                    )}
                   </span>
                 </p>
                 <p className="flex items-start gap-2.5">

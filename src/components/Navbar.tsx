@@ -262,22 +262,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right Phone Contact Link & Mobile Menu Toggle */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#f0d795] px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#d8b45c]/15 to-[#f0d795]/5 border border-[#d8b45c]/40 whitespace-nowrap shadow-sm">
+          <a
+            href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
+            className="hidden sm:flex items-center gap-2 text-xs text-[#f0d795] hover:text-white px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#d8b45c]/15 to-[#f0d795]/5 border border-[#d8b45c]/40 hover:border-[#d8b45c] whitespace-nowrap shadow-sm transition"
+          >
             <Phone size={12} className="text-[#d8b45c] flex-shrink-0" />
-            <a
-              href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
-              className="hover:text-white transition font-medium tracking-wider"
-            >
-              {VATALIYA_CORPORATE_INFO.phoneDisplay}
-            </a>
-            <span className="text-gray-500">|</span>
-            <a
-              href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
-              className="hover:text-white transition font-medium tracking-wider"
-            >
-              {VATALIYA_CORPORATE_INFO.phone2Display}
-            </a>
-          </div>
+            <span className="font-medium tracking-wider">{VATALIYA_CORPORATE_INFO.phoneDisplay}</span>
+          </a>
 
           {/* Mobile phone quick button */}
           <a
@@ -303,7 +294,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#050b18] border-b border-[#d8b45c]/30 px-5 sm:px-6 py-5 space-y-4 text-white text-sm uppercase tracking-widest animate-fadeIn shadow-2xl">
           {/* Mobile Direct Central Call Banner */}
-          <div className="space-y-2">
+          <div>
             <a
               href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
               className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#d8b45c]/20 via-[#f0d795]/10 to-transparent border border-[#d8b45c]/40 text-[#f0d795] normal-case"
@@ -311,22 +302,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="flex items-center gap-2.5">
                 <Phone size={15} className="text-[#d8b45c]" />
                 <span className="text-xs font-semibold tracking-normal">
-                  Central Sales 1: {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                </span>
-              </div>
-              <span className="text-[10px] uppercase font-bold tracking-wider bg-[#d8b45c] text-black px-2.5 py-1 rounded-md">
-                Call
-              </span>
-            </a>
-
-            <a
-              href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
-              className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#d8b45c]/20 via-[#f0d795]/10 to-transparent border border-[#d8b45c]/40 text-[#f0d795] normal-case"
-            >
-              <div className="flex items-center gap-2.5">
-                <Phone size={15} className="text-[#d8b45c]" />
-                <span className="text-xs font-semibold tracking-normal">
-                  Central Sales 2: {VATALIYA_CORPORATE_INFO.phone2Display}
+                  Central Sales: {VATALIYA_CORPORATE_INFO.phoneDisplay}
                 </span>
               </div>
               <span className="text-[10px] uppercase font-bold tracking-wider bg-[#d8b45c] text-black px-2.5 py-1 rounded-md">

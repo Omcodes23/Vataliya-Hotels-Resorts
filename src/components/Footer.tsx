@@ -168,15 +168,9 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="space-y-2.5 text-gray-300">
               <div className="flex items-center gap-2">
                 <Phone size={14} className="text-[#d8b45c] flex-shrink-0" />
-                <div className="flex flex-wrap items-center gap-1.5 font-medium text-white">
-                  <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:underline">
-                    {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                  </a>
-                  <span className="text-gray-500">|</span>
-                  <a href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`} className="hover:underline">
-                    {VATALIYA_CORPORATE_INFO.phone2Display}
-                  </a>
-                </div>
+                <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="font-medium text-white hover:underline">
+                  {VATALIYA_CORPORATE_INFO.phoneDisplay}
+                </a>
               </div>
               <p className="flex items-center gap-2">
                 <Mail size={14} className="text-[#d8b45c] flex-shrink-0" />

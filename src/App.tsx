@@ -229,20 +229,13 @@ export function App() {
                       <p className="text-xs text-gray-300 leading-relaxed pt-2 border-t border-white/10">
                         Central hospitality desk for property management, group bookings, and stay inquiries.
                       </p>
-                      <div className="pt-1 flex flex-wrap items-center justify-center gap-1.5 text-xs text-[#f0d795] font-semibold tracking-wider">
+                      <div className="pt-1 flex items-center justify-center gap-1.5 text-xs text-[#f0d795] font-semibold tracking-wider">
                         <Phone size={13} className="text-[#d8b45c] flex-shrink-0" />
                         <a
                           href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
                           className="hover:underline"
                         >
                           {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                        </a>
-                        <span className="text-gray-500">|</span>
-                        <a
-                          href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
-                          className="hover:underline"
-                        >
-                          {VATALIYA_CORPORATE_INFO.phone2Display}
                         </a>
                       </div>
                     </div>
@@ -402,20 +395,13 @@ export function App() {
                     Call our central hospitality desk for group bookings, corporate stays, and tariff information.
                   </p>
                   <div className="pt-2 space-y-2 text-sm">
-                    <div className="flex flex-wrap items-center gap-2 text-[#f0d795] font-semibold">
+                    <div className="flex items-center gap-2 text-[#f0d795] font-semibold">
                       <Phone size={15} />
                       <a
                         href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
                         className="hover:underline"
                       >
                         {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                      </a>
-                      <span className="text-gray-500">|</span>
-                      <a
-                        href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
-                        className="hover:underline"
-                      >
-                        {VATALIYA_CORPORATE_INFO.phone2Display}
                       </a>
                     </div>
                     <a
@@ -450,14 +436,10 @@ export function App() {
                     >
                       <Mail size={15} /> {VATALIYA_CORPORATE_INFO.partnershipsEmail}
                     </a>
-                    <div className="flex flex-wrap items-center gap-2 text-gray-300">
+                    <div className="flex items-center gap-2 text-gray-300">
                       <Phone size={15} className="text-[#d8b45c]" />
                       <a href={`tel:${VATALIYA_CORPORATE_INFO.phone}`} className="hover:text-white">
                         {VATALIYA_CORPORATE_INFO.phoneDisplay}
-                      </a>
-                      <span className="text-gray-500">|</span>
-                      <a href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`} className="hover:text-white">
-                        {VATALIYA_CORPORATE_INFO.phone2Display}
                       </a>
                     </div>
                   </div>
