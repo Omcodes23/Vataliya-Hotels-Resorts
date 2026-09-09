@@ -108,7 +108,7 @@ export const HotelBrandLogo: React.FC<HotelBrandLogoProps> = ({
       {!imageFailed && hotel.logoUrl ? (
         <img
           src={hotel.logoUrl}
-          alt={`${hotel.name} Logo`}
+          alt={`${hotel.name} Logo by Vataliya Hotels & Resorts`}
           className="max-h-full max-w-full object-contain"
           onError={() => setImageFailed(true)}
           loading="eager"

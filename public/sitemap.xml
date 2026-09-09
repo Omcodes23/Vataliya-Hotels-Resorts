@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Vataliya Corporate Homepage -->
+  <url>
+    <loc>https://vataliyas.com/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://vataliyas.com/vataliya1.png</image:loc>
+      <image:title>Vataliya Hotels &amp; Resorts Logo</image:title>
+      <image:caption>Vataliya Hotels &amp; Resorts - Where Luxury Meets Excellence</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Fyra Ashapuri Snow Inn (Prini, Manali - 3 Star) -->
+  <url>
+    <loc>https://vataliyas.com/#hotel/the-fyra-ashapuri-snow-inn</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://vataliyas.com/hotelphotos/fyraashapurisnowinn/IMG_2825.PNG</image:loc>
+      <image:title>Fyra Ashapuri Snow Inn Manali - Resort Facade &amp; Vataliya Entrance</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vataliyas.com/hotelphotos/fyraashapurisnowinn/IMG_2820.PNG</image:loc>
+      <image:title>Super Deluxe Room with Balcony - Fyra Ashapuri Snow Inn Manali</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vataliyas.com/hotelphotos/fyraashapurisnowinn/IMG_2819.PNG</image:loc>
+      <image:title>Private Snow Mountain View Balcony - Fyra Ashapuri Snow Inn</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://vataliyas.com/hotelphotos/fyraashapurisnowinn/IMG_2826.PNG</image:loc>
+      <image:title>Multi-Cuisine Fine Dining Restaurant - Fyra Ashapuri Snow Inn</image:title>
+    </image:image>
+  </url>
+
+  <!-- Manaw Valley Resort (Shimla - 3 Star) -->
+  <url>
+    <loc>https://vataliyas.com/#hotel/manaw-valley-resort</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://manawvalleyresort.com/gallery/1.jpg</image:loc>
+      <image:title>Manaw Valley Resort Shimla - Mountain Panoramic View</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://manawvalleyresort.com/gallery/6.jpg</image:loc>
+      <image:title>Manaw Valley Resort Shimla - Lobby &amp; Luxury Reception</image:title>
+    </image:image>
+  </url>
+
+  <!-- Hotel Indrasan Manali (Prini, Manali - 3 Star) -->
+  <url>
+    <loc>https://vataliyas.com/#hotel/hotel-indrasan-manali</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.hotelindrasanmanali.com/images/indrasan.jpg</image:loc>
+      <image:title>Hotel Indrasan Manali - Mountain Resort Facade</image:title>
+    </image:image>
+  </url>
+
+  <!-- Our Partner Hotels Section -->
+  <url>
+    <loc>https://vataliyas.com/#hotels</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Portfolio Showcase Section -->
+  <url>
+    <loc>https://vataliyas.com/#portfolio</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Corporate & MICE Section -->
+  <url>
+    <loc>https://vataliyas.com/#corporate</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact & Operations Desk -->
+  <url>
+    <loc>https://vataliyas.com/#contact</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

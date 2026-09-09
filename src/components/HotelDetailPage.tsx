@@ -280,7 +280,9 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
               <div className="relative h-64 sm:h-72 overflow-hidden bg-[#050b18]">
                 <img
                   src={room.image}
-                  alt={room.name}
+                  alt={`${room.name} at ${hotel.name} by Vataliya Hotels & Resorts`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071329] via-transparent to-transparent" />
@@ -404,7 +406,9 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             <div className="relative rounded-2xl overflow-hidden border border-[#d8b45c]/30 shadow-2xl">
               <img
                 src={hotel.dining.image}
-                alt={hotel.dining.title}
+                alt={`${hotel.dining.title} at ${hotel.name} by Vataliya`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-80 sm:h-96 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -444,7 +448,9 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
               <div className="h-52 overflow-hidden relative">
                 <img
                   src={exp.image}
-                  alt={exp.title}
+                  alt={`${exp.title} - ${hotel.name} by Vataliya`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                 />
                 <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/70 text-[10px] text-[#f0d795] font-semibold tracking-wider uppercase">
@@ -536,7 +542,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             >
               <img
                 src={img.url}
-                alt={img.title}
+                alt={`${img.title} - ${hotel.name} by Vataliya Hotels & Resorts`}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover group-hover:scale-110 transition duration-500"

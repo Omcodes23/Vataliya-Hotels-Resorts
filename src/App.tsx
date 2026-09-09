@@ -111,6 +111,35 @@ export function App() {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
+  const currentHotelSlug = activeView.startsWith('hotel:')
+    ? activeView.replace('hotel:', '')
+    : null;
+
+  const currentHotel = currentHotelSlug ? HOTELS_DATA[currentHotelSlug] : null;
+
+  // Dynamic SEO Title & Meta Description updating for Google Search Indexing
+  useEffect(() => {
+    if (currentHotel) {
+      document.title = `${currentHotel.name} (${currentHotel.starRating}★, ${currentHotel.city}) by Vataliya Hotels & Resorts`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          `${currentHotel.name} by Vataliya in ${currentHotel.city}, Himachal Pradesh. 3-Star mountain retreat featuring balcony snow views, AC rooms, fine dining & central hospitality desk.`
+        );
+      }
+    } else {
+      document.title = 'Vataliya Hotels & Resorts — Luxury Mountain Sanctuaries in Shimla & Manali';
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute(
+          'content',
+          'Vataliya Hotels & Resorts — Curating authentic luxury mountain retreats and distinctive B2B hospitality experiences across Himachal Pradesh (Manaw Valley Resort Shimla, Fyra Ashapuri Snow Inn Manali, Hotel Indrasan Manali) and India.'
+        );
+      }
+    }
+  }, [currentHotel]);
+
   const navigateToHome = () => {
     window.location.hash = 'top';
     setActiveView('home');
@@ -122,12 +151,6 @@ export function App() {
     setActiveView(`hotel:${slug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const currentHotelSlug = activeView.startsWith('hotel:')
-    ? activeView.replace('hotel:', '')
-    : null;
-
-  const currentHotel = currentHotelSlug ? HOTELS_DATA[currentHotelSlug] : null;
 
   return (
     <div className="site-shell bg-[#050b18] text-[#f6f4ef]" ref={rootRef as React.RefObject<HTMLDivElement>}>
