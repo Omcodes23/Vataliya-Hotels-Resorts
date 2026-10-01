@@ -436,18 +436,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             Contact
           </a>
 
-          <div className="pt-2 grid grid-cols-2 gap-2">
+          <div className="pt-2">
             <a
               href={`tel:${VATALIYA_CORPORATE_INFO.phone}`}
               className="block w-full py-2.5 text-center text-xs text-[#f0d795] border border-[#d8b45c]/40 rounded-lg bg-[#081a38]"
             >
               📞 {VATALIYA_CORPORATE_INFO.phoneDisplay}
-            </a>
-            <a
-              href={`tel:${VATALIYA_CORPORATE_INFO.phone2}`}
-              className="block w-full py-2.5 text-center text-xs text-[#f0d795] border border-[#d8b45c]/40 rounded-lg bg-[#081a38]"
-            >
-              📞 {VATALIYA_CORPORATE_INFO.phone2Display}
             </a>
           </div>
         </div>

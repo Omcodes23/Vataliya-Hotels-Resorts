@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Index
-Sitemap: https://vataliyas.com/sitemap.xml
+Sitemap: https://www.vataliyas.com/sitemap.xml

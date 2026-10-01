@@ -665,7 +665,7 @@ export const HotelDetailPage: React.FC<HotelDetailPageProps> = ({
             Inquire for {hotel.name} by Vataliya
           </h2>
           <p className="text-sm text-gray-200">
-            Connect directly via email at <strong className="text-[#f0d795]">{hotel.hotelInquiryEmail}</strong>{hotel.hotelSecondaryEmail && <> | <strong className="text-[#f0d795]">{hotel.hotelSecondaryEmail}</strong></>} or call our desk on <strong className="text-white">{VATALIYA_CORPORATE_INFO.phoneDisplay}</strong> | <strong className="text-white">{VATALIYA_CORPORATE_INFO.phone2Display}</strong>.
+            Connect directly via email at <strong className="text-[#f0d795]">{hotel.hotelInquiryEmail}</strong>{hotel.hotelSecondaryEmail && <> | <strong className="text-[#f0d795]">{hotel.hotelSecondaryEmail}</strong></>} or call our desk on <strong className="text-white">{hotel.vataliyaCentralPhone}</strong>{hotel.vataliyaCentralPhone2 && <> | <strong className="text-white">{hotel.vataliyaCentralPhone2}</strong></>}.
           </p>
           <div className="pt-3 flex flex-wrap justify-center gap-3">
             <a

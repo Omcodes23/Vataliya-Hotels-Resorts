@@ -1,15 +1,18 @@
-import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-  ArrowDown, ArrowRight, Award, Briefcase, Building2, Calendar,
-  CheckCircle2, ChevronRight, Compass, Flame, HeartHandshake,
-  Instagram, Mail, MapPin, MessageSquare, Mountain, Phone,
-  ShieldCheck, Sparkles, Star, TreePine, Users, UtensilsCrossed,
+  ArrowDown, ArrowRight, Building2, HeartHandshake,
+  Instagram, Mail, MapPin, MessageSquare, Phone,
+  Sparkles,
 } from 'lucide-react';
-import { DESTINATIONS_DATA, HOTELS_DATA, VATALIYA_CORPORATE_INFO } from './data/hotelsData';
+import { HOTELS_DATA, VATALIYA_CORPORATE_INFO } from './data/hotelsData';
 import { Navbar } from './components/Navbar';
 import { HotelDetailPage } from './components/HotelDetailPage';
 import { HotelBrandLogo } from './components/HotelBrandLogo';
 import { Footer } from './components/Footer';
+
+/** Slug for a hotel page, used both in the hash route and the clean /hotels/:slug path. */
+const hotelPathSlug = (slug: string) =>
+  slug.startsWith('the-') ? slug.slice('the-'.length) : slug;
 
 const HERO_IMG = 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1920';
 const RESORT_DUSK = 'https://images.pexels.com/photos/37108959/pexels-photo-37108959.jpeg?auto=compress&cs=tinysrgb&w=1920';
@@ -89,26 +92,42 @@ export function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [activeView]);
 
-  // URL hash sync
+  // Route sync: supports both the legacy hash route (#hotel/:slug) and the
+  // indexable clean path (/hotels/:slug). The clean path is what Google can
+  // crawl and rank as an individual hotel page.
   useEffect(() => {
-    const handleHash = () => {
+    const slugFromLocation = (): string | null => {
       const hash = window.location.hash.replace(/^#\/?/, '');
-      if (hash.startsWith('hotel/')) {
-        const slug = hash.replace('hotel/', '');
-        if (HOTELS_DATA[slug]) {
-          setActiveView(`hotel:${slug}`);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
+      const fromHash = hash.startsWith('hotel/') ? hash.replace('hotel/', '') : null;
+      if (fromHash && HOTELS_DATA[fromHash]) return fromHash;
+
+      const match = window.location.pathname.match(/^\/hotels\/([^/?#]+)\/?$/);
+      const fromPath = match ? decodeURIComponent(match[1]) : null;
+      if (fromPath) {
+        // Accept both "fyra-ashapuri-snow-inn" and the internal "the-fyra-…" id.
+        if (HOTELS_DATA[fromPath]) return fromPath;
+        if (HOTELS_DATA[`the-${fromPath}`]) return `the-${fromPath}`;
       }
-      if (!hash || hash === 'top' || hash === 'home') {
-        setActiveView('home');
-      }
+      return null;
     };
 
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+    const handleRoute = () => {
+      const slug = slugFromLocation();
+      if (slug) {
+        setActiveView(`hotel:${slug}`);
+      } else if (!window.location.hash || /^#\/?(top|home)?$/.test(window.location.hash)) {
+        setActiveView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    handleRoute();
+    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('popstate', handleRoute);
+    return () => {
+      window.removeEventListener('hashchange', handleRoute);
+      window.removeEventListener('popstate', handleRoute);
+    };
   }, []);
 
   const currentHotelSlug = activeView.startsWith('hotel:')
@@ -119,25 +138,107 @@ export function App() {
 
   // Dynamic SEO Title & Meta Description updating for Google Search Indexing
   useEffect(() => {
-    if (currentHotel) {
-      document.title = `${currentHotel.name} (${currentHotel.starRating}★, ${currentHotel.city}) by Vataliya Hotels & Resorts`;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute(
-          'content',
-          `${currentHotel.name} by Vataliya in ${currentHotel.city}, Himachal Pradesh. 3-Star mountain retreat featuring balcony snow views, AC rooms, fine dining & central hospitality desk.`
-        );
+    const setMeta = (selector: string, attr: 'name' | 'property', key: string, value: string) => {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute(attr === 'name' ? 'content' : 'content', value);
+      else {
+        const created = document.createElement('meta');
+        created.setAttribute(attr, key);
+        created.setAttribute('content', value);
+        document.head.appendChild(created);
       }
-    } else {
-      document.title = 'Vataliya Hotels & Resorts — Luxury Mountain Sanctuaries in Shimla & Manali';
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute(
-          'content',
-          'Vataliya Hotels & Resorts — Curating authentic luxury mountain retreats and distinctive B2B hospitality experiences across Himachal Pradesh (Manaw Valley Resort Shimla, Fyra Ashapuri Snow Inn Manali, Hotel Indrasan Manali) and India.'
-        );
-      }
+    };
+
+    const title = currentHotel
+      ? `${currentHotel.name} (${currentHotel.starRating}★, ${currentHotel.city}) by Vataliya Hotels & Resorts`
+      : 'Vataliya Hotels & Resorts — Luxury Mountain Sanctuaries in Shimla & Manali';
+
+    const description = currentHotel
+      ? `${currentHotel.name} by Vataliya Hotels & Resorts in ${currentHotel.city}, Himachal Pradesh. A ${currentHotel.starRating}-Star mountain property with balcony views, in-house dining, and Vataliya's central hospitality desk handling all stay inquiries.`
+      : 'Vataliya Hotels & Resorts — Curating authentic luxury mountain retreats and distinctive B2B hospitality experiences across Himachal Pradesh (Manaw Valley Resort Shimla, Fyra Ashapuri Snow Inn Manali, Hotel Indrasan Manali) and India.';
+
+    const canonical = currentHotel
+      ? `https://www.vataliyas.com/hotels/${hotelPathSlug(currentHotel.slug)}`
+      : 'https://www.vataliyas.com/';
+
+    document.title = title;
+    setMeta('meta[name="description"]', 'name', 'description', description);
+    setMeta('meta[property="og:title"]', 'property', 'og:title', title);
+    setMeta('meta[property="og:description"]', 'property', 'og:description', description);
+    setMeta('meta[property="og:url"]', 'property', 'og:url', canonical);
+    setMeta('meta[property="og:type"]', 'property', 'og:type', currentHotel ? 'article' : 'website');
+    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', title);
+    setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', description);
+
+    let canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
     }
+    canonicalLink.href = canonical;
+
+    // Each hotel page carries its own Hotel entity, cross-linked to the Vataliya
+    // Organization, so the page can rank for the property's brand name.
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.dataset.hotelSchema = 'true';
+    if (currentHotel) {
+      script.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Hotel',
+            '@id': `https://www.vataliyas.com/#hotel/${currentHotel.slug}`,
+            name: currentHotel.name,
+            url: canonical,
+            description,
+            image: `${window.location.origin}${currentHotel.heroImage.startsWith('/') ? '' : '/'}${currentHotel.heroImage}`,
+            telephone: currentHotel.vataliyaCentralPhone,
+            email: currentHotel.hotelInquiryEmail,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: currentHotel.propertyAddress,
+              addressLocality: currentHotel.city,
+              addressRegion: currentHotel.state,
+              addressCountry: 'IN',
+            },
+            starRating: {
+              '@type': 'Rating',
+              ratingValue: String(currentHotel.starRating),
+              bestRating: '5',
+              worstRating: '1',
+            },
+            amenityFeature: (currentHotel.amenitiesList || []).map((a) => ({
+              '@type': 'LocationFeatureSpecification',
+              name: a,
+              value: true,
+            })),
+            brand: { '@id': 'https://www.vataliyas.com/#organization' },
+            parentOrganization: { '@id': 'https://www.vataliyas.com/#organization' },
+          },
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://www.vataliyas.com/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: currentHotel.name,
+                item: canonical,
+              },
+            ],
+          },
+        ],
+      });
+    }
+    document.head.appendChild(script);
+    return () => script.remove();
   }, [currentHotel]);
 
   const navigateToHome = () => {
@@ -151,6 +252,16 @@ export function App() {
     setActiveView(`hotel:${slug}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Replace the hash route with the clean /hotels/:slug path so the address bar
+  // and the shared link match the indexable URL Google sees.
+  useEffect(() => {
+    if (!currentHotelSlug) return;
+    const clean = `/hotels/${hotelPathSlug(currentHotelSlug)}`;
+    if (window.location.pathname !== clean) {
+      window.history.replaceState(null, '', clean);
+    }
+  }, [currentHotelSlug]);
 
   return (
     <div className="site-shell bg-[#050b18] text-[#f6f4ef]" ref={rootRef as React.RefObject<HTMLDivElement>}>
