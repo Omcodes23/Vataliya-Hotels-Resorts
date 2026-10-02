@@ -474,7 +474,7 @@ export const HOTELS_DATA: Record<string, HotelData> = {
   'the-fyra-ashapuri-snow-inn': {
     id: 'the-fyra-ashapuri-snow-inn',
     slug: 'the-fyra-ashapuri-snow-inn',
-    name: 'Fyra Ashapuri Snow Inn',
+    name: 'Ashapuri Snow Inn',
     tagline: '3-Star Mountain Haven in the Heart of Prini, Manali · Operated by Vataliya',
     starRating: 3,
     locationName: 'Near Himachal Gramin Bank, Prini, Manali',
@@ -483,7 +483,7 @@ export const HOTELS_DATA: Record<string, HotelData> = {
     propertyAddress: 'FYRA Ashapuri Snow Inn, Near Himachal Gramin Bank, Prini, Manali, Himachal Pradesh - 175131',
     vataliyaCentralPhone: '+91 91066 62535',
     vataliyaCentralPhone2: '+91 97117 54726',
-    hotelInquiryEmail: 'fyraashapuri@vataliyas.com',
+    hotelInquiryEmail: 'ashapurisnowinn@vataliyas.com',
     hotelSecondaryEmail: 'info@fyrahotel.com',
     centralBookingEmail: 'booking@vataliyas.com',
     whatsappNumber: '919106662535',

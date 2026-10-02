@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateHotel('the-fyra-ashapuri-snow-inn')}
                   className="hover:text-[#f0d795] transition text-left"
                 >
-                  📍 Manali: Fyra Ashapuri (3★)
+                  📍 Manali: Ashapuri Snow Inn (3★)
                 </button>
               </li>
               <li>
@@ -138,7 +138,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onNavigateHotel('the-fyra-ashapuri-snow-inn')}
                   className="font-medium text-white hover:text-[#f0d795] transition text-left block"
                 >
-                  Fyra Ashapuri Snow Inn (Manali)
+                  Ashapuri Snow Inn (Manali)
                 </button>
                 <div className="space-y-0.5">
                   <a

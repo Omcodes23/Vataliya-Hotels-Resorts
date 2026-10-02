@@ -384,7 +384,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     }}
                     className="w-full text-left p-2.5 rounded bg-white/[0.04] text-[#f0d795] text-xs font-serif flex items-center justify-between"
                   >
-                    <span>➔ Fyra Ashapuri Snow Inn (3★)</span>
+                    <span>➔ Ashapuri Snow Inn (3★)</span>
                     <ArrowRight size={13} />
                   </button>
                 </div>

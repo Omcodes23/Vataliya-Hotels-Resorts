@@ -155,7 +155,7 @@ export function App() {
 
     const description = currentHotel
       ? `${currentHotel.name} by Vataliya Hotels & Resorts in ${currentHotel.city}, Himachal Pradesh. A ${currentHotel.starRating}-Star mountain property with balcony views, in-house dining, and Vataliya's central hospitality desk handling all stay inquiries.`
-      : 'Vataliya Hotels & Resorts — Curating authentic luxury mountain retreats and distinctive B2B hospitality experiences across Himachal Pradesh (Manaw Valley Resort Shimla, Fyra Ashapuri Snow Inn Manali, Hotel Indrasan Manali) and India.';
+      : 'Vataliya Hotels & Resorts — Curating authentic luxury mountain retreats and distinctive B2B hospitality experiences across Himachal Pradesh (Manaw Valley Resort Shimla, Ashapuri Snow Inn Manali, Hotel Indrasan Manali) and India.';
 
     const canonical = currentHotel
       ? `https://www.vataliyas.com/hotels/${hotelPathSlug(currentHotel.slug)}`
@@ -330,7 +330,7 @@ export function App() {
                     <strong className="text-[#d8b45c] text-sm">01</strong> Shimla: Manaw Valley Resort (3★)
                   </span>
                   <span className="flex items-center gap-2">
-                    <strong className="text-[#d8b45c] text-sm">02</strong> Manali: Hotel Indrasan & Fyra Ashapuri Snow Inn
+                    <strong className="text-[#d8b45c] text-sm">02</strong> Manali: Hotel Indrasan & Ashapuri Snow Inn
                   </span>
                   <span className="flex items-center gap-2">
                     <strong className="text-[#d8b45c] text-sm">03</strong> Central B2B Operations
